@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilian - Développeur Web</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <div class="nav-brand">Kilian</div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#accueil" class="nav-link">Accueil</a></li>
+            <li><a href="#apropos" class="nav-link">À propos</a></li>
+            <li><a href="#parcours" class="nav-link">Parcours</a></li>
+            <li><a href="#projets" class="nav-link">Projets</a></li>
+            <li><a href="#competences" class="nav-link">Compétences</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Section Accueil -->
+<section id="accueil" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="greeting">Bonjour, je suis</span>
+                    <span class="name">Kilian</span>
+                </h1>
+                <p class="hero-subtitle">Développeur Web en formation | Étudiant en BUT Informatique (RACDV)</p>
+                <p class="hero-description">
+                    Je transforme des idées en applications web performantes et intuitives.
+                    Actuellement en 2ème année de BUT Informatique, j'ai déjà eu la chance de réaliser
+                    un projet e-commerce complet en freelance.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="IMG_0685.jpg" alt="Kilian" class="profile-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section À propos -->
+<section id="apropos" class="section">
+    <div class="container">
+        <h2 class="section-title">À propos de moi</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="IMG_9614.jpg" alt="Kilian" class="about-img">
+            </div>
+            <div class="about-text">
+                <h3>Ma passion pour le web</h3>
+                <p>
+                    Ce qui me passionne dans le développement web, c'est la capacité de créer des sites web
+                    qui répondent à de vrais besoins. J'aime l'idée de construire une interface que les utilisateurs
+                    apprécient et de la connecter à une logique robuste et sécurisée.
+                </p>
+                <p>
+                    J'ai rapidement voulu confronter ma formation à la réalité du terrain. C'est pourquoi j'ai saisi
+                    l'opportunité de travailler en freelance sur un projet de site e-commerce. Gérer la relation client,
+                    respecter les délais et livrer un produit fonctionnel a été une expérience incroyablement formatrice
+                    qui a confirmé mon choix de carrière.
+                </p>
+                <a href="Dach-CV-Q1.pdf" class="btn btn-outline" target="_blank" download>
+                    Télécharger mon CV
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Parcours -->
+<section id="parcours" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Mon parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>BUT Informatique - Parcours RACDV</h3>
+                    <p class="timeline-location">IUT de Montpellier</p>
+                    <p>
+                        Actuellement étudiant en BUT Informatique, mon parcours RACDV (Réalisation d'Applications :
+                        Conception, Développement, Validation) me forme à la totalité du cycle de vie logiciel.
+                        De la conception (UML, bases de données) au développement (Front-end et Back-end) jusqu'à
+                        la validation (tests unitaires, tests d'intégration), j'ai donc une vision complète et
+                        rigoureuse de la création d'applications.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Baccalauréat STI2D (SIN)</h3>
+                    <p class="timeline-location">Mention Bien</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Projets -->
+<section id="projets" class="section">
+    <div class="container">
+        <h2 class="section-title">Mes projets</h2>
+        <div class="projects-grid">
+            <!-- Projet V2C Shop -->
+            <div class="project-card featured">
+                <div class="project-badge">Projet en vedette</div>
+                <div class="project-content">
+                    <h3 class="project-title">V2C Shop</h3>
+                    <p class="project-context">Projet professionnel (Freelance)</p>
+                    <p class="project-description">
+                        Réalisation d'un site e-commerce complet pour V2C, une petite marque indépendante de vente
+                        de t-shirts. L'objectif était de créer une boutique en ligne moderne et esthétique, facile
+                        à administrer pour le client et optimisée pour la conversion.
+                    </p>
+                    <div class="project-missions">
+                        <h4>Mes missions :</h4>
+                        <ul>
+                            <li>Analyse des besoins du client</li>
+                            <li>Conception de la maquette et de l'expérience utilisateur</li>
+                            <li>Développement Front-end et Back-end de la boutique</li>
+                            <li>Intégration d'un système de paiement sécurisé avec son API (Stripe)</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Stripe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet BottomUp -->
+            <div class="project-card">
+                <div class="project-content">
+                    <h3 class="project-title">BottomUp</h3>
+                    <p class="project-context">Projet académique (BUT Informatique S3)</p>
+                    <p class="project-description">
+                        Dans le cadre de mon parcours RACDV, nous avons développé un site web de vote participatif.
+                        Un site en PHP, HTML, CSS et Javascript qui a été développé en équipe de 4 en utilisant la
+                        méthode agile. Ce projet a été très enrichissant car il m'a permis d'apprendre à travailler
+                        en équipe avec des méthodes et outils de gestion (Trello, Git), il m'a aussi permis de bien
+                        comprendre comment gérer un client (ses priorités, délais, contraintes, etc).
+                    </p>
+                    <div class="project-missions">
+                        <h4>Mes missions :</h4>
+                        <ul>
+                            <li>Mise en place d'une architecture MVC</li>
+                            <li>Généralisation du code pour éviter la duplication de code</li>
+                            <li>Conception de la base de données</li>
+                            <li>Réalisation des tests unitaires</li>
+                        </ul>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Compétences -->
+<section id="competences" class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Compétences techniques</h2>
+        <p class="section-subtitle">
+            Voici les technologies et outils que j'utilise au quotidien, que ce soit en projet universitaire,
+            personnel ou professionnel.
+        </p>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="skill-category-title">Langages & Frameworks</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <h4>Front-End</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Back-End</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Bases de données</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3 class="skill-category-title">Outils & Méthodes</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <h4>Versionning</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">GitLab</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Méthodologie</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Méthodes Agiles (Scrum)</span>
+                            <span class="skill-tag">Conception (UML)</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Outils</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">PhpStorm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Contact -->
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="section-title">Contactez-moi</h2>
+        <p class="section-subtitle">
+            Vous avez un projet en tête ? N'hésitez pas à me contacter !
+        </p>
+        <div class="contact-content">
+            <div class="contact-info">
+                <p>
+                    Je suis toujours ouvert à discuter de nouveaux projets, opportunités de collaboration
+                    ou simplement échanger sur le développement web.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:kilian.dach@etu.umontpellier.fr" class="contact-link">
+                        <span class="contact-icon">✉</span>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://github.com/KilianDa" class="contact-link" target="_blank">
+                        <span class="contact-icon">🔗</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kilian-dach-70b7732aa" class="contact-link" target="_blank">
+                        <span class="contact-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="Dach-CV-Q1.pdf" class="contact-link" target="_blank" download>
+                        <span class="contact-icon">📄</span>
+                        <span>Télécharger mon CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 Kilian. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
