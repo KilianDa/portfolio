@@ -51,25 +51,48 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Intersection Observer for fade-in animations
+// Optimized for both mobile and desktop
+function checkMobileDevice() {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Create observer with optimized options
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: checkMobileDevice() ? 0.05 : 0.15,
+    rootMargin: checkMobileDevice() ? '0px' : '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-up');
-            observer.unobserve(entry.target);
+        // Only animate if element is intersecting and hasn't been animated yet
+        if (entry.isIntersecting && !entry.target.classList.contains('fade-in-up')) {
+            // Use requestAnimationFrame for smoother animations
+            requestAnimationFrame(() => {
+                entry.target.classList.add('fade-in-up');
+                // Immediately stop observing to prevent re-animation
+                observer.unobserve(entry.target);
+            });
         }
     });
 }, observerOptions);
 
-// Observe all sections and project cards
-const sections = document.querySelectorAll('.section, .project-card, .skill-category, .timeline-item');
-sections.forEach(section => {
-    observer.observe(section);
-});
+// Wait for DOM to be fully loaded before observing
+function initAnimations() {
+    const sections = document.querySelectorAll('.section, .project-card, .skill-category, .timeline-item');
+    sections.forEach(section => {
+        // Only observe if not already animated
+        if (!section.classList.contains('fade-in-up')) {
+            observer.observe(section);
+        }
+    });
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+    initAnimations();
+}
 
 // Active nav link highlighting
 const updateActiveNavLink = () => {
@@ -111,10 +134,25 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Subtle parallax effect on images only (not on sections to avoid layout issues)
+// Disabled on mobile devices for better performance and UX
 let ticking = false;
 const imageParallaxState = new Map();
 
+function isMobileDevice() {
+    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 function updateParallax() {
+    // Disable parallax on mobile devices
+    if (isMobileDevice()) {
+        const profileImg = document.querySelector('.profile-img');
+        const aboutImg = document.querySelector('.about-img');
+        if (profileImg) profileImg.style.transform = '';
+        if (aboutImg) aboutImg.style.transform = '';
+        ticking = false;
+        return;
+    }
+
     const scrolled = window.pageYOffset;
     const profileImg = document.querySelector('.profile-img');
     const aboutImg = document.querySelector('.about-img');
@@ -164,6 +202,16 @@ window.addEventListener('scroll', () => {
     if (!ticking) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
+    }
+});
+
+// Reset parallax on window resize
+window.addEventListener('resize', () => {
+    if (isMobileDevice()) {
+        const profileImg = document.querySelector('.profile-img');
+        const aboutImg = document.querySelector('.about-img');
+        if (profileImg) profileImg.style.transform = '';
+        if (aboutImg) aboutImg.style.transform = '';
     }
 });
 
