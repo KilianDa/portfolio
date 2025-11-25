@@ -1,0 +1,77 @@
+Titre : Kilian
+Sous-titre : Développeur Web en formation | Étudiant en BUT Informatique (RACDV)
+
+- Intro
+Bonjour et bienvenue ! Je suis Kilian, un étudiant passionné par le développement web. Je transforme des idées en applications web performantes et intuitives. Actuellement en 2ème année de BUT Informatique, j'ai déjà eu la chance de réaliser un projet e-commerce complet en freelance. Et plusieurs projets au cours de ma formation.
+
+- Parcours
+Actuellement étudiant en BUT Informatique à l'IUT de Montpellier, mon parcours RACDV (Réalisation d'Applications : Conception, Développement, Validation) me forme à la totalité du cycle de vie logiciel. De la conception (UML, bases de données) au développement (Front-end et Back-end) jusqu'à la validation (tests unitaires, tests d'intégration), j'ai donc une vision complète et rigoureuse de la création d'applications.
+
+- Passion web
+Ce qui me passionne dans le développement web, c'est la capacité de créer des sites web qui répondent à de vrais besoins. J'aime l'idée de construire une interface que les utilisateurs apprécient et de la connecter à une logique robuste et sécurisée.
+
+- Projets
+. V2C shop (mettre images archives)
+J'ai rapidement voulu confronter ma formation à la réalité du terrain. C'est pourquoi j'ai saisi l'opportunité de travailler en freelance sur un projet de site e-commerce. Gérer la relation client, respecter les délais et livrer un produit fonctionnel a été une expérience incroyablement formatrice qui a confirmé mon choix de carrière. J'ai particulièrement aimé cette expérience car elle m'a permis de mettre mes connaissances à exécution et d'aider mon client à améliorer son business grâce à mes compétences.
+
+. BottomUp
+Projet auquel j'ai contribué avec mon équipe qui consistait à développer un site web de système de vote participatif. Un site en PHP, HTML, CSS et Javascript qui à été développé en équipe de 4 en utilisant la méthode agile. Ce projet a été très enrichissant car il m'a permis d'apprendre à travailler en équipe avec des méthodes et outils de gestion (Trello, Git), il m'a aussi permit de bien comprendre comment gérer un client (ses priorités, délais, contraintes, etc).
+(mettre liens vers la description détaillé des projet)
+
+- Compétences techniques
+Voici les technologies et outils que j'utilise au quotidien, que ce soit en projet universitaire, personnel ou professionnel.
+
+Langages & Frameworks
+Front-End : HTML, CSS, JavaScript
+
+Back-End : PHP, Java, C
+
+Bases de données : SQL
+
+Outils & Méthodes
+Versionning : Git, GitHub / GitLab
+
+Méthodologie : Méthodes Agiles (Scrum), Conception (UML)
+
+Outils : Docker, Figma, PhpStorm
+
+Projet en vedette : Site E-commerce V2C
+Contexte : Projet professionnel (Freelance)
+
+Description : "Réalisation d'un site e-commerce complet pour V2C, une petite marque indépendante de vente de t-shirts. L'objectif était de créer une boutique en ligne moderne et esthétique, facile à administrer pour le client et optimisée pour la conversion."
+
+Mes missions :
+
+Analyse des besoins du client
+
+Conception de la maquette et de l'expérience utilisateur
+
+Développement Front-end et Back-end de la boutique
+
+Intégration d'un système de paiement sécurisé avec son API (Stripe)
+
+
+Technologies utilisées : HTML, CSS, JS avec Node.js/Stripe pour les paiements
+
+Archives : [images, code etccc]
+
+Projet Universitaire : BottomUp
+Contexte : Projet académique (BUT Informatique S3)
+
+Description : Dans le cadre de mon parcours RACDV, nous avons développé un site web de vote participatif.
+
+Mes missions :
+
+Mise en place d'une architecture MVC
+
+Généralisation du code pour éviter la duplication de code
+
+Conception de la base de données
+
+Réalisation des tests unitaires
+
+
+
+Technologies utilisées : PHP, PHPmyAdmin, HTML, CSS, JS
+
+Outils : Trello, Git, Gitlab, Docker
