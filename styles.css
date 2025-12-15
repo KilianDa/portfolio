@@ -315,6 +315,17 @@ body {
     margin: 0 auto 3rem;
 }
 
+/* Secondary portfolio button */
+.secondary-portfolio-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+}
+
+.hobbies-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
 /* About Section */
 .about-content {
     display: grid;
