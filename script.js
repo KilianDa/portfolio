@@ -1,7 +1,67 @@
-// Navigation mobile toggle
+// ===================================
+// PORTFOLIO KILIAN - INTERACTIVE SCRIPTS
+// ===================================
+
+// ===== CUSTOM CURSOR =====
+let cursor = document.getElementById('cursorDot');
+
+// Create cursor element if it doesn't exist
+if (!cursor) {
+    cursor = document.createElement('div');
+    cursor.className = 'cursor-dot';
+    cursor.id = 'cursorDot';
+    document.body.appendChild(cursor);
+}
+
+let mouseX = 0;
+let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
+
+// Track mouse position
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+// Smooth cursor movement with interpolation
+function animateCursor() {
+    if (!cursor) return;
+    
+    // Smooth follow effect
+    const speed = 0.15;
+    cursorX += (mouseX - cursorX) * speed;
+    cursorY += (mouseY - cursorY) * speed;
+
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+
+    requestAnimationFrame(animateCursor);
+}
+
+// Only initialize cursor on desktop
+if (window.innerWidth > 768 && cursor) {
+    animateCursor();
+    cursor.classList.add('active');
+}
+
+// Scale cursor on interactive elements
+const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'scale(2)';
+    });
+    el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'scale(1)';
+    });
+});
+
+// ===== NAVIGATION =====
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
+const navbar = document.getElementById('navbar');
 
+// Mobile menu toggle
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -18,30 +78,25 @@ navLinks.forEach(link => {
     });
 });
 
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
-
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
+        const href = this.getAttribute('href');
+
+        // Skip if it's just "#" (return to top handled differently)
+        if (href === '#' || href === '#accueil') {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+
+        const target = document.querySelector(href);
         if (target) {
-            const offsetTop = target.offsetTop - 70; // Account for fixed navbar
+            e.preventDefault();
+            const offsetTop = target.offsetTop - 80;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -50,37 +105,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for fade-in animations
-// Optimized for both mobile and desktop
-function checkMobileDevice() {
-    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
+// Active nav link highlighting
+const updateActiveNavLink = () => {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
 
-// Create observer with optimized options
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (window.pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+};
+
+// Add active state styling
+const style = document.createElement('style');
+style.textContent = `
+    .nav-link.active {
+        color: var(--color-accent-primary);
+    }
+`;
+document.head.appendChild(style);
+
+// ===== SCROLL ANIMATIONS =====
+// Intersection Observer for fade-in animations
 const observerOptions = {
-    threshold: checkMobileDevice() ? 0.05 : 0.15,
-    rootMargin: checkMobileDevice() ? '0px' : '0px 0px -100px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        // Only animate if element is intersecting and hasn't been animated yet
         if (entry.isIntersecting && !entry.target.classList.contains('fade-in-up')) {
-            // Use requestAnimationFrame for smoother animations
             requestAnimationFrame(() => {
                 entry.target.classList.add('fade-in-up');
-                // Immediately stop observing to prevent re-animation
                 observer.unobserve(entry.target);
             });
         }
     });
 }, observerOptions);
 
-// Wait for DOM to be fully loaded before observing
+// Observe sections and elements
 function initAnimations() {
-    const sections = document.querySelectorAll('.section, .project-card, .skill-category, .timeline-item');
+    const sections = document.querySelectorAll('.section, .project-card, .skill-category, .timeline-item, .hobby-card, .hobby-item');
     sections.forEach(section => {
-        // Only observe if not already animated
         if (!section.classList.contains('fade-in-up')) {
             observer.observe(section);
         }
@@ -94,61 +171,63 @@ if (document.readyState === 'loading') {
     initAnimations();
 }
 
-// Active nav link highlighting
-const updateActiveNavLink = () => {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop - 100) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-};
+// ===== SCROLL EFFECTS =====
+let lastScroll = 0;
 
-window.addEventListener('scroll', updateActiveNavLink);
-updateActiveNavLink(); // Initial call
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
 
-// Add active state styling
-const style = document.createElement('style');
-style.textContent = `
-    .nav-link.active {
-        color: var(--primary-color);
+    // Update active nav link
+    updateActiveNavLink();
+
+    // Navbar background on scroll
+    if (currentScroll > 50) {
+        navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+    } else {
+        navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
     }
-    .nav-link.active::after {
-        width: 100%;
-    }
-`;
-document.head.appendChild(style);
 
-// Subtle parallax effect on images only (not on sections to avoid layout issues)
-// Disabled on mobile devices for better performance and UX
-let ticking = false;
-const imageParallaxState = new Map();
+    lastScroll = currentScroll;
+});
 
-function isMobileDevice() {
-    return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+// Initial call
+updateActiveNavLink();
+
+// ===== PAGE LOAD ANIMATION =====
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// ===== TYPING EFFECT FOR TERMINAL PROMPTS =====
+// Add subtle glitch effect to certain elements
+function addGlitchEffect() {
+    const glitchElements = document.querySelectorAll('.hero-title-outline, .section-number');
+
+    glitchElements.forEach(el => {
+        setInterval(() => {
+            if (Math.random() > 0.95) { // 5% chance
+                el.style.opacity = '0.8';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                }, 50);
+            }
+        }, 3000);
+    });
 }
 
+// Initialize glitch effect
+setTimeout(addGlitchEffect, 2000);
+
+// ===== PARALLAX EFFECT ON IMAGES =====
+let ticking = false;
+
 function updateParallax() {
-    // Disable parallax on mobile devices
-    if (isMobileDevice()) {
-        const profileImg = document.querySelector('.profile-img');
-        const aboutImg = document.querySelector('.about-img');
-        if (profileImg) profileImg.style.transform = '';
-        if (aboutImg) aboutImg.style.transform = '';
+    if (window.innerWidth <= 768) {
         ticking = false;
         return;
     }
@@ -156,102 +235,143 @@ function updateParallax() {
     const scrolled = window.pageYOffset;
     const profileImg = document.querySelector('.profile-img');
     const aboutImg = document.querySelector('.about-img');
-    
-    // Parallax on hero image (very subtle, only when visible and not hovered)
-    if (profileImg && !imageParallaxState.get(profileImg)) {
+
+    // Subtle parallax on hero image
+    if (profileImg) {
         const heroSection = document.querySelector('.hero');
         if (heroSection) {
             const heroTop = heroSection.offsetTop;
             const heroHeight = heroSection.offsetHeight;
             const heroBottom = heroTop + heroHeight;
             const windowHeight = window.innerHeight;
-            
-            // Only apply parallax when image is in viewport
+
             if (scrolled + windowHeight >= heroTop && scrolled <= heroBottom) {
-                const parallaxValue = (scrolled - heroTop) * 0.08; // Very subtle
+                const parallaxValue = (scrolled - heroTop) * 0.05;
                 profileImg.style.transform = `translateY(${parallaxValue}px)`;
-            } else {
-                profileImg.style.transform = 'translateY(0)';
             }
         }
     }
-    
-    // Parallax on about image (very subtle, only when visible and not hovered)
-    if (aboutImg && !imageParallaxState.get(aboutImg)) {
+
+    // Subtle parallax on about image
+    if (aboutImg) {
         const aboutSection = document.querySelector('#apropos');
         if (aboutSection) {
             const aboutTop = aboutSection.offsetTop;
             const aboutHeight = aboutSection.offsetHeight;
             const aboutBottom = aboutTop + aboutHeight;
             const windowHeight = window.innerHeight;
-            
-            // Only apply parallax when image is in viewport
+
             if (scrolled + windowHeight >= aboutTop && scrolled <= aboutBottom) {
-                const parallaxValue = (scrolled + windowHeight - aboutTop) * 0.06; // Very subtle
+                const parallaxValue = (scrolled + windowHeight - aboutTop) * 0.04;
                 aboutImg.style.transform = `translateY(${parallaxValue}px)`;
-            } else {
-                aboutImg.style.transform = 'translateY(0)';
             }
         }
     }
-    
+
     ticking = false;
 }
 
 window.addEventListener('scroll', () => {
-    if (!ticking) {
+    if (!ticking && window.innerWidth > 768) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
     }
 });
 
-// Reset parallax on window resize
-window.addEventListener('resize', () => {
-    if (isMobileDevice()) {
-        const profileImg = document.querySelector('.profile-img');
-        const aboutImg = document.querySelector('.about-img');
-        if (profileImg) profileImg.style.transform = '';
-        if (aboutImg) aboutImg.style.transform = '';
-    }
+// ===== TECH TAG ANIMATIONS =====
+// Add staggered hover effects to tech tags
+const techTags = document.querySelectorAll('.tech-tag, .skill-tag');
+techTags.forEach((tag, index) => {
+    tag.style.animationDelay = `${index * 0.05}s`;
 });
 
-// Disable parallax on hover to avoid conflicts with CSS hover effects
-document.addEventListener('DOMContentLoaded', () => {
-    const profileImg = document.querySelector('.profile-img');
-    const aboutImg = document.querySelector('.about-img');
-    
-    [profileImg, aboutImg].forEach(img => {
-        if (img) {
-            imageParallaxState.set(img, false);
-            
-            img.addEventListener('mouseenter', () => {
-                imageParallaxState.set(img, true);
-                img.style.transform = ''; // Let CSS handle the hover transform
-            });
-            
-            img.addEventListener('mouseleave', () => {
-                imageParallaxState.set(img, false);
-                updateParallax(); // Re-enable parallax
-            });
-        }
+// ===== PROJECT CARDS INTERACTIVE =====
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+    card.addEventListener('mouseenter', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
     });
 });
 
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.3s ease-in';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', (e) => {
+    // Escape key closes mobile menu
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+    }
 });
 
-// Project card hover effects are now handled by CSS for better performance
+// ===== PERFORMANCE OPTIMIZATION =====
+// Disable animations on mobile for better performance
+if (window.innerWidth <= 768) {
+    document.body.style.cursor = 'default';
+}
 
-// Skill tags hover effects are now handled by CSS for better performance
+// Reduce motion for users who prefer it
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.style.scrollBehavior = 'auto';
 
-// Console message
-console.log('%c👋 Bienvenue sur mon portfolio !', 'color: #6366f1; font-size: 20px; font-weight: bold;');
-console.log('%cVous êtes développeur ? N\'hésitez pas à me contacter !', 'color: #6b7280; font-size: 14px;');
+    // Disable parallax
+    window.removeEventListener('scroll', updateParallax);
+}
 
+// ===== CONSOLE MESSAGE =====
+console.log('%c[ KILIAN ]', 'color: #9342d4; font-size: 24px; font-weight: bold; font-family: monospace;');
+console.log('%c> Développeur Web', 'color: #00d9ff; font-size: 14px; font-family: monospace;');
+console.log('%c> Portfolio 2026', 'color: #a0a0a0; font-size: 14px; font-family: monospace;');
+console.log('%c> Contact: kilian.dach@etu.umontpellier.fr', 'color: #606060; font-size: 12px; font-family: monospace;');
+
+// ===== EASTER EGG: KONAMI CODE =====
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+            // Easter egg activated!
+            document.body.style.animation = 'rainbow 2s infinite';
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes rainbow {
+                    0% { filter: hue-rotate(0deg); }
+                    100% { filter: hue-rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+
+            console.log('%c🎮 KONAMI CODE ACTIVATED! 🎮', 'color: #ff0080; font-size: 20px; font-weight: bold;');
+
+            // Reset after 5 seconds
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 5000);
+
+            konamiIndex = 0;
+        }
+    } else {
+        konamiIndex = 0;
+    }
+});
+
+// ===== INITIALIZE =====
+// Add loaded class to body when everything is ready
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Refresh scroll animations on resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        // Reinitialize animations if needed
+        initAnimations();
+    }, 250);
+});
