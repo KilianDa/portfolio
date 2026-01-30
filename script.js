@@ -32,10 +32,10 @@ function animateCursor() {
     const speed = 0.15;
     cursorX += (mouseX - cursorX) * speed;
     cursorY += (mouseY - cursorY) * speed;
-
+    
     cursor.style.left = cursorX + 'px';
     cursor.style.top = cursorY + 'px';
-
+    
     requestAnimationFrame(animateCursor);
 }
 
@@ -82,7 +82,7 @@ navLinks.forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-
+        
         // Skip if it's just "#" (return to top handled differently)
         if (href === '#' || href === '#accueil') {
             e.preventDefault();
@@ -92,7 +92,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
             return;
         }
-
+        
         const target = document.querySelector(href);
         if (target) {
             e.preventDefault();
@@ -109,16 +109,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const updateActiveNavLink = () => {
     const sections = document.querySelectorAll('section[id]');
     let current = '';
-
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-
+        
         if (window.pageYOffset >= sectionTop - 150) {
             current = section.getAttribute('id');
         }
     });
-
+    
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -176,17 +176,17 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-
+    
     // Update active nav link
     updateActiveNavLink();
-
+    
     // Navbar background on scroll
     if (currentScroll > 50) {
         navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
     } else {
         navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
     }
-
+    
     lastScroll = currentScroll;
 });
 
@@ -197,7 +197,7 @@ updateActiveNavLink();
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
-
+    
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
@@ -207,7 +207,7 @@ window.addEventListener('load', () => {
 // Add subtle glitch effect to certain elements
 function addGlitchEffect() {
     const glitchElements = document.querySelectorAll('.hero-title-outline, .section-number');
-
+    
     glitchElements.forEach(el => {
         setInterval(() => {
             if (Math.random() > 0.95) { // 5% chance
@@ -223,61 +223,6 @@ function addGlitchEffect() {
 // Initialize glitch effect
 setTimeout(addGlitchEffect, 2000);
 
-// ===== PARALLAX EFFECT ON IMAGES =====
-let ticking = false;
-
-function updateParallax() {
-    if (window.innerWidth <= 768) {
-        ticking = false;
-        return;
-    }
-
-    const scrolled = window.pageYOffset;
-    const profileImg = document.querySelector('.profile-img');
-    const aboutImg = document.querySelector('.about-img');
-
-    // Subtle parallax on hero image
-    if (profileImg) {
-        const heroSection = document.querySelector('.hero');
-        if (heroSection) {
-            const heroTop = heroSection.offsetTop;
-            const heroHeight = heroSection.offsetHeight;
-            const heroBottom = heroTop + heroHeight;
-            const windowHeight = window.innerHeight;
-
-            if (scrolled + windowHeight >= heroTop && scrolled <= heroBottom) {
-                const parallaxValue = (scrolled - heroTop) * 0.05;
-                profileImg.style.transform = `translateY(${parallaxValue}px)`;
-            }
-        }
-    }
-
-    // Subtle parallax on about image
-    if (aboutImg) {
-        const aboutSection = document.querySelector('#apropos');
-        if (aboutSection) {
-            const aboutTop = aboutSection.offsetTop;
-            const aboutHeight = aboutSection.offsetHeight;
-            const aboutBottom = aboutTop + aboutHeight;
-            const windowHeight = window.innerHeight;
-
-            if (scrolled + windowHeight >= aboutTop && scrolled <= aboutBottom) {
-                const parallaxValue = (scrolled + windowHeight - aboutTop) * 0.04;
-                aboutImg.style.transform = `translateY(${parallaxValue}px)`;
-            }
-        }
-    }
-
-    ticking = false;
-}
-
-window.addEventListener('scroll', () => {
-    if (!ticking && window.innerWidth > 768) {
-        window.requestAnimationFrame(updateParallax);
-        ticking = true;
-    }
-});
-
 // ===== TECH TAG ANIMATIONS =====
 // Add staggered hover effects to tech tags
 const techTags = document.querySelectorAll('.tech-tag, .skill-tag');
@@ -292,7 +237,7 @@ projectCards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
+        
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
     });
@@ -316,7 +261,7 @@ if (window.innerWidth <= 768) {
 // Reduce motion for users who prefer it
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.style.scrollBehavior = 'auto';
-
+    
     // Disable parallax
     window.removeEventListener('scroll', updateParallax);
 }
@@ -325,7 +270,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 console.log('%c[ KILIAN ]', 'color: #9342d4; font-size: 24px; font-weight: bold; font-family: monospace;');
 console.log('%c> Développeur Web', 'color: #00d9ff; font-size: 14px; font-family: monospace;');
 console.log('%c> Portfolio 2026', 'color: #a0a0a0; font-size: 14px; font-family: monospace;');
-console.log('%c> Contact: kilian.dach@etu.umontpellier.fr', 'color: #606060; font-size: 12px; font-family: monospace;');
+console.log('%c> Contact: kilian.dach@proton.me', 'color: #606060; font-size: 12px; font-family: monospace;');
 
 // ===== EASTER EGG: KONAMI CODE =====
 let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
@@ -345,14 +290,14 @@ document.addEventListener('keydown', (e) => {
                 }
             `;
             document.head.appendChild(style);
-
+            
             console.log('%c🎮 KONAMI CODE ACTIVATED! 🎮', 'color: #ff0080; font-size: 20px; font-weight: bold;');
-
+            
             // Reset after 5 seconds
             setTimeout(() => {
                 document.body.style.animation = '';
             }, 5000);
-
+            
             konamiIndex = 0;
         }
     } else {

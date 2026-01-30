@@ -7,44 +7,49 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="grain-overlay"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
     <div class="page-loader" id="pageLoader">
         <div class="page-loader-inner">
             <div class="page-loader-logo">
                 <span class="nav-brand-bracket">[</span>
-                <span class="nav-brand-name">K</span>
+                <span class="nav-brand-name"><img src="logo.gif" alt="Kilian" class="page-loader-logo-gif"></span>
                 <span class="nav-brand-bracket">]</span>
             </div>
-            <p class="page-loader-text">Chargement du projet...</p>
+            <p class="page-loader-text">Chargement du portfolio...</p>
             <div class="page-loader-bar">
                 <div class="page-loader-bar-fill"></div>
             </div>
         </div>
     </div>
-
+    
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="nav-brand"><a href="index.html" style="text-decoration: none; color: inherit;">Kilian</a></div>
+            <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="logo.gif" alt="Kilian" class="nav-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
+            </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html#accueil" class="nav-link">Accueil</a></li>
-                <li><a href="index.html#apropos" class="nav-link">À propos</a></li>
-                <li><a href="index.html#parcours" class="nav-link">Parcours</a></li>
-                <li><a href="index.html#projets" class="nav-link">Projets</a></li>
-                <li><a href="index.html#competences" class="nav-link">Compétences</a></li>
-                <li><a href="index.html#loisirs" class="nav-link">Loisirs</a></li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="index.html#accueil" class="nav-link" data-text="00">Accueil</a></li>
+                <li><a href="index.html#apropos" class="nav-link" data-text="01">À propos</a></li>
+                <li><a href="index.html#parcours" class="nav-link" data-text="02">Parcours</a></li>
+                <li><a href="index.html#projets" class="nav-link" data-text="03">Projets</a></li>
+                <li><a href="index.html#competences" class="nav-link" data-text="04">Compétences</a></li>
+                <li><a href="index.html#loisirs" class="nav-link" data-text="05">Loisirs</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-text="06">Contact</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
     </nav>
-
+    
     <!-- Project Header -->
     <section class="project-header">
         <div class="container">
@@ -62,7 +67,6 @@
             </div>
         </div>
     </section>
-
     <!-- Project Details -->
     <section class="section">
         <div class="container">
@@ -81,7 +85,7 @@
                         en respectant les contraintes et priorités du client.
                     </p>
                 </div>
-
+                
                 <!-- Missions -->
                 <div class="project-detail-section">
                     <h2>Mes missions</h2>
@@ -89,26 +93,26 @@
                         <div class="mission-card">
                             <h3>Architecture MVC</h3>
                             <p>Mise en place d'une architecture Model-View-Controller pour structurer le code et 
-                            faciliter la maintenance et l'évolution de l'application.</p>
+                                faciliter la maintenance et l'évolution de l'application.</p>
                         </div>
                         <div class="mission-card">
                             <h3>Généralisation du code</h3>
                             <p>Réduction de la duplication de code en créant des composants réutilisables et en 
-                            appliquant les principes DRY (Don't Repeat Yourself).</p>
+                                appliquant les principes DRY (Don't Repeat Yourself).</p>
                         </div>
                         <div class="mission-card">
                             <h3>Conception de la base de données</h3>
                             <p>Modélisation et création de la base de données SQL, en veillant à la normalisation 
-                            et à l'intégrité des données.</p>
+                                et à l'intégrité des données.</p>
                         </div>
                         <div class="mission-card">
                             <h3>Tests unitaires</h3>
                             <p>Réalisation de tests unitaires pour garantir la qualité et la fiabilité du code 
-                            développé.</p>
+                                développé.</p>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Technologies -->
                 <div class="project-detail-section">
                     <h2>Technologies utilisées</h2>
@@ -145,7 +149,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Méthodologie -->
                 <div class="project-detail-section">
                     <h2>Méthodologie de travail</h2>
@@ -160,7 +164,7 @@
                         méthodes et outils de gestion professionnels.
                     </p>
                 </div>
-
+                
                 <!-- Vidéo -->
                 <div class="project-detail-section">
                     <h2>Démonstration</h2>
@@ -171,7 +175,7 @@
                         </video>
                     </div>
                 </div>
-
+                
                 <!-- Résultats -->
                 <div class="project-detail-section">
                     <h2>Résultats et apprentissages</h2>
@@ -199,5 +203,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-

@@ -10,453 +10,449 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="grain-overlay"></div>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="page-loader" id="pageLoader">
-    <div class="page-loader-inner">
-        <div class="page-loader-logo">
-            <span class="nav-brand-bracket">[</span>
-            <span class="nav-brand-name">K</span>
-            <span class="nav-brand-bracket">]</span>
-        </div>
-        <p class="page-loader-text">Chargement du portfolio...</p>
-        <div class="page-loader-bar">
-            <div class="page-loader-bar-fill"></div>
-        </div>
-    </div>
-</div>
-
-<!-- Navigation -->
-<nav class="navbar" id="navbar">
-    <div class="container">
-        <div class="nav-brand">
-            <span class="nav-brand-bracket">[</span>
-            <span class="nav-brand-name">K</span>
-            <span class="nav-brand-bracket">]</span>
-        </div>
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="#accueil" class="nav-link" data-text="00">Accueil</a></li>
-            <li><a href="#apropos" class="nav-link" data-text="01">À propos</a></li>
-            <li><a href="#parcours" class="nav-link" data-text="02">Parcours</a></li>
-            <li><a href="#projets" class="nav-link" data-text="03">Projets</a></li>
-            <li><a href="#competences" class="nav-link" data-text="04">Compétences</a></li>
-            <li><a href="#loisirs" class="nav-link" data-text="05">Loisirs</a></li>
-            <li><a href="#contact" class="nav-link" data-text="06">Contact</a></li>
-        </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</nav>
-
-<!-- Section Accueil -->
-<section id="accueil" class="hero">
-    <div class="container">
-        <div class="hero-grid">
-            <div class="hero-label">
-                <span class="label-line"></span>
-                <span class="label-text">DÉVELOPPEUR WEB / 2026</span>
+    <div class="grain-overlay"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader-inner">
+            <div class="page-loader-logo">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="logo.gif" alt="Kilian" class="page-loader-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
             </div>
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="hero-title-line" data-delay="0">KILIAN</span>
-                    <span class="hero-title-line hero-title-outline" data-delay="100">DACH</span>
-                </h1>
-                <div class="hero-subtitle-wrapper">
-                    <p class="hero-subtitle" data-delay="200">
-                        <span class="terminal-prompt">$</span> Étudiant BUT Informatique
-                    </p>
-                    <p class="hero-subtitle" data-delay="250">
-                        <span class="terminal-prompt">$</span> Freelance e-commerce
-                    </p>
-                </div>
-            </div>
-            <div class="hero-image-wrapper">
-                <div class="hero-image-border"></div>
-                <img src="IMG_0685.jpg" alt="Kilian" class="profile-img" data-delay="300">
-            </div>
-            <div class="hero-description" data-delay="350">
-                <p>
-                    Je transforme des idées en applications web performantes et intuitives.
-                    Passionné par le développement full-stack et la création d'expériences utilisateur mémorables.
-                </p>
-            </div>
-            <div class="hero-cta" data-delay="400">
-                <a href="#projets" class="btn btn-primary">
-                    <span class="btn-text">PROJETS</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <a href="#contact" class="btn btn-secondary">
-                    <span class="btn-text">CONTACT</span>
-                    <span class="btn-arrow">→</span>
-                </a>
+            <p class="page-loader-text">Chargement du portfolio...</p>
+            <div class="page-loader-bar">
+                <div class="page-loader-bar-fill"></div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Section À propos -->
-<section id="apropos" class="section section-about">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">01</span>
-            <h2 class="section-title">À propos</h2>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#accueil" class="nav-brand" style="text-decoration: none; color: inherit;">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="logo.gif" alt="Kilian" class="nav-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#accueil" class="nav-link" data-text="00">Accueil</a></li>
+                <li><a href="#apropos" class="nav-link" data-text="01">À propos</a></li>
+                <li><a href="#parcours" class="nav-link" data-text="02">Parcours</a></li>
+                <li><a href="#projets" class="nav-link" data-text="03">Projets</a></li>
+                <li><a href="#competences" class="nav-link" data-text="04">Compétences</a></li>
+                <li><a href="#loisirs" class="nav-link" data-text="05">Loisirs</a></li>
+                <li><a href="#contact" class="nav-link" data-text="06">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <div class="about-grid">
-            <div class="about-image-col">
-                <div class="about-image-frame">
-                    <img src="IMG_9614.jpg" alt="Kilian" class="about-img">
-                    <div class="image-corner image-corner-tl"></div>
-                    <div class="image-corner image-corner-br"></div>
+    </nav>
+    
+    <!-- Section Accueil -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-label">
+                    <span class="label-line"></span>
+                    <span class="label-text">PORTFOLIO</span>
                 </div>
-            </div>
-            <div class="about-content-col">
-                <div class="about-block">
-                    <h3 class="about-heading">
-                        <span class="heading-marker">//</span> Ma passion
-                    </h3>
-                    <p class="about-text">
-                        Ce qui me passionne dans le développement web, c'est la capacité de créer des sites web
-                        qui répondent à de vrais besoins. J'aime l'idée de construire une interface que les utilisateurs
-                        apprécient et de la connecter à une logique robuste et sécurisée.
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-line" data-delay="0">KILIAN</span>
+                        <span class="hero-title-line hero-title-outline" data-delay="100">DACH</span>
+                    </h1>
+                    <div class="hero-subtitle-wrapper">
+                        <p class="hero-subtitle" data-delay="200">
+                            Étudiant BUT Informatique
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <span class="hero-image-tagline" data-delay="350">think outside the box</span>
+                    <img src="hero-image.png" alt="Kilian" class="hero-profile-img" data-delay="300">
+                </div>
+                <div class="hero-description" data-delay="350">
+                    <p>
+                        Je transforme des idées en applications web créatives et performantes.
+                        Passionné par le développement full-stack et la création d'expériences utilisateur mémorables.
                     </p>
                 </div>
-                <div class="about-block">
-                    <h3 class="about-heading">
-                        <span class="heading-marker">//</span> Mon expérience
-                    </h3>
-                    <p class="about-text">
-                        J'ai rapidement voulu confronter ma formation à la réalité du terrain. C'est pourquoi j'ai saisi
-                        l'opportunité de travailler en freelance sur un projet de site e-commerce. Gérer la relation client,
-                        respecter les délais et livrer un produit fonctionnel a été une expérience incroyablement formatrice
-                        qui a confirmé mon choix de carrière.
-                    </p>
-                </div>
-                <div class="about-cta">
-                    <a href="Dach-Kilian-CV.pdf" class="link-underline" target="_blank" download>
-                        <span>Télécharger mon CV</span>
-                        <span class="link-arrow">↓</span>
+                <div class="hero-cta" data-delay="400">
+                    <a href="#projets" class="btn btn-primary">
+                        <span class="btn-text">PROJETS</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-text">CONTACT</span>
+                        <span class="btn-arrow">→</span>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Section Parcours -->
-<section id="parcours" class="section section-timeline">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">02</span>
-            <h2 class="section-title">Parcours</h2>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-year">2023—2025</div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">BUT Informatique</h3>
-                    <p class="timeline-subtitle">Parcours RACDV / IUT Montpellier</p>
-                    <p class="timeline-description">
-                        Actuellement étudiant en BUT Informatique, mon parcours RACDV (Réalisation d'Applications :
-                        Conception, Développement, Validation) me forme à la totalité du cycle de vie logiciel.
-                        De la conception (UML, bases de données) au développement (Front-end et Back-end) jusqu'à
-                        la validation (tests unitaires, tests d'intégration), j'ai donc une vision complète et
-                        rigoureuse de la création d'applications.
-                    </p>
-                </div>
+    </section>
+    
+    <!-- Section À propos -->
+    <section id="apropos" class="section section-about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">À propos</h2>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-year">2021—2023</div>
-                <div class="timeline-content">
-                    <h3 class="timeline-title">Baccalauréat STI2D (SIN)</h3>
-                    <p class="timeline-subtitle">Mention Bien</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Section Projets -->
-<section id="projets" class="section section-projects">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">03</span>
-            <h2 class="section-title">Projets</h2>
-        </div>
-        <div class="projects-grid">
-            <!-- Projet V2C Shop -->
-            <a href="v2c-shop.html" class="project-card project-featured">
-                <div class="project-badge">
-                    <span class="badge-bracket">[</span>
-                    <span class="badge-text">FEATURED</span>
-                    <span class="badge-bracket">]</span>
-                </div>
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">V2C Shop</h3>
-                        <span class="project-year">2024</span>
-                    </div>
-                    <p class="project-context">FREELANCE / E-COMMERCE</p>
-                    <p class="project-description">
-                        Réalisation d'un site e-commerce complet pour V2C, une petite marque indépendante de vente
-                        de t-shirts. L'objectif était de créer une boutique en ligne moderne et esthétique, facile
-                        à administrer pour le client et optimisée pour la conversion.
-                        Le projet a été réalisé en environ 1 mois et a été un véritable challenge pour moi.
-                        Car je n'avais jamais réalisé un projet de cette envergure.
-                        J'ai beaucoup appris en le faisant, que ce soit en terme de développement, de relation client,
-                        de gestion de projet, etc.
-                    </p>
-                    <div class="project-missions">
-                        <h4>Mes missions :</h4>
-                        <ul>
-                            <li>Analyse des besoins du client</li>
-                            <li>Conception de la maquette et de l'expérience utilisateur</li>
-                            <li>Développement Front-end et Back-end de la boutique</li>
-                            <li>Intégration d'un système de paiement sécurisé avec son API (Stripe)</li>
-                        </ul>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Stripe</span>
+            <div class="about-grid">
+                <div class="about-image-col">
+                    <div class="about-image-frame">
+                        <img src="IMG_0685.jpg" alt="Kilian" class="about-img">
+                        <div class="image-corner image-corner-tl"></div>
+                        <div class="image-corner image-corner-br"></div>
                     </div>
                 </div>
-            </a>
-
-            <!-- Projet BottomUp -->
-            <a href="bottomup.html" class="project-card">
-                <div class="project-content">
-                    <div class="project-header">
-                        <h3 class="project-title">BottomUp</h3>
-                        <span class="project-year">2025</span>
+                <div class="about-content-col">
+                    <div class="about-block">
+                        <h3 class="about-heading">
+                            <span class="heading-marker">//</span> Ma passion
+                        </h3>
+                        <p class="about-text">
+                            Ce qui me passionne dans le développement web, c'est que je peux répondre à de vrais besoins avec ma créativité. J'aime l'idée de construire une interface que les utilisateurs
+                            apprécient et de la connecter à une logique robuste et sécurisée.
+                        </p>
                     </div>
-                    <p class="project-context">ACADÉMIQUE / VOTE PARTICIPATIF</p>
-                    <p class="project-description">
-                        Dans le cadre de mon parcours RACDV, nous avons développé un site web de vote participatif.
-                        Un site en PHP, HTML, CSS et Javascript qui a été développé en équipe de 4 en utilisant la
-                        méthode agile. Ce projet a été très enrichissant car il m'a permis d'apprendre à travailler
-                        en équipe avec des méthodes et outils de gestion (Trello, Git), il m'a aussi permis de bien
-                        comprendre comment gérer un client (ses priorités, délais, contraintes, etc).
-                    </p>
-                    <div class="project-missions">
-                        <h4>Mes missions :</h4>
-                        <ul>
-                            <li>Mise en place d'une architecture MVC</li>
-                            <li>Généralisation du code pour éviter la duplication de code</li>
-                            <li>Conception de la base de données</li>
-                            <li>Réalisation des tests unitaires</li>
-                        </ul>
+                    <div class="about-block">
+                        <h3 class="about-heading">
+                            <span class="heading-marker">//</span> Mon expérience
+                        </h3>
+                        <p class="about-text">
+                            J'ai rapidement voulu confronter ma formation à la réalité du terrain. C'est pourquoi j'ai saisi
+                            l'opportunité de travailler en freelance sur un projet de site e-commerce. Gérer la relation client,
+                            respecter les délais et livrer un produit fonctionnel a été une expérience incroyablement formatrice
+                            qui a confirmé mon choix de carrière.
+                        </p>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">PHP</span>
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Section Compétences -->
-<section id="competences" class="section section-skills">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">04</span>
-            <h2 class="section-title">Compétences</h2>
-        </div>
-        <p class="section-intro">
-            Technologies et outils que j'utilise au quotidien, que ce soit en projet universitaire,
-            personnel ou professionnel.
-        </p>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3 class="skill-category-title">Langages & Frameworks</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <h4>Front-End</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Back-End</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">PHP</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">C</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Bases de données</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">SQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3 class="skill-category-title">Outils & Méthodes</h3>
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <h4>Versionning</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">GitHub</span>
-                            <span class="skill-tag">GitLab</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Méthodologie</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Méthodes Agiles (Scrum)</span>
-                            <span class="skill-tag">Conception (UML)</span>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h4>Outils</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Figma</span>
-                            <span class="skill-tag">PhpStorm</span>
-                        </div>
+                    <div class="about-cta">
+                        <a href="Dach-Kilian-CV.pdf" class="link-underline" target="_blank" download>
+                            <span>Télécharger mon CV</span>
+                            <span class="link-arrow">↓</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Section Loisirs -->
-<section id="loisirs" class="section section-hobbies">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">05</span>
-            <h2 class="section-title">Loisirs</h2>
-        </div>
-        <p class="section-intro">
-            Au-delà du développement web, je suis passionné par la création visuelle et audiovisuelle
-        </p>
-        <div class="hobbies-content">
-            <div class="hobbies-main">
-                <div class="hobby-card featured-hobby">
-                    <div class="hobby-icon">🎥</div>
-                    <h3>Vidéo & Photographie</h3>
-                    <p>
-                        La vidéo et la photographie sont des passions qui me permettent d'exprimer ma créativité
-                        et de capturer des moments uniques. Que ce soit dans l'automobile, pour des projets créatifs,
-                        des portraits ou des événements, j'aime créer du contenu visuel de qualité professionnelle.
-                    </p>
-                    <p>
-                        J'utilise également des drones (drone classique et drone FPV) pour réaliser des prises de vues
-                        aériennes
-                        et offrir des perspectives uniques à mes projets vidéo et photos.
-                    </p>
-                    <p class="hobby-highlight">
-                        <strong>Offre combinée :</strong> Je propose des services de développement web couplés avec
-                        de la production vidéo et photographique professionnelle. Idéal pour créer une présence
-                        en ligne complète avec un site web sur mesure et du contenu visuel de qualité pour votre
-                        communication digitale.
-                    </p>
-                </div>
+    </section>
+    
+    <!-- Section Parcours -->
+    <section id="parcours" class="section section-timeline">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Parcours</h2>
             </div>
-            <div class="hobbies-grid">
-                <div class="hobby-item">
-                    <div class="hobby-item-icon">📸</div>
-                    <h4>Photographie</h4>
-                    <p>Automobile, Portraits, événements, produits, architecture</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2023—2025</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">BUT Informatique</h3>
+                        <p class="timeline-subtitle">Parcours RACDV / IUT Montpellier</p>
+                        <p class="timeline-description">
+                            Actuellement étudiant en BUT Informatique, mon parcours RACDV (Réalisation d'Applications :
+                            Conception, Développement, Validation) me forme à la totalité du cycle de vie logiciel.
+                            De la conception (UML, bases de données) au développement (Front-end et Back-end) jusqu'à
+                            la validation (tests unitaires, tests d'intégration), j'ai donc une vision complète et
+                            rigoureuse de la création d'applications.
+                        </p>
+                    </div>
                 </div>
-                <div class="hobby-item">
-                    <div class="hobby-item-icon">🎬</div>
-                    <h4>Vidéo</h4>
-                    <p>Montage, colorimétrie, contenu pour les réseaux sociaux, prises de vues aériennes</p>
-                </div>
-                <div class="hobby-item">
-                    <div class="hobby-item-icon">🚁</div>
-                    <h4>Drones</h4>
-                    <p>Drone classique et FPV pour vidéos aériennes</p>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021—2023</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Baccalauréat STI2D (SIN)</h3>
+                        <p class="timeline-subtitle">Mention Bien</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="hobbies-cta">
-            <p class="section-subtitle">
-                Si cette facette (vidéo/photo) vous intéresse d'avantage, je vous redirige vers mon
-                autre portfolio. Plus orienté photo et vidéo
+    </section>
+    
+    <!-- Section Projets -->
+    <section id="projets" class="section section-projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Projets</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Projet V2C Shop -->
+                <a href="v2c-shop.html" class="project-card project-featured">
+                    <div class="project-badge">
+                        <span class="badge-bracket">[</span>
+                        <span class="badge-text">PROJET EN VEDETTE</span>
+                        <span class="badge-bracket">]</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">V2C Shop</h3>
+                            <span class="project-year">2024</span>
+                        </div>
+                        <p class="project-context">FREELANCE / E-COMMERCE</p>
+                        <p class="project-description">
+                            Réalisation d'un site e-commerce complet pour V2C, une petite marque indépendante de vente
+                            de t-shirts. L'objectif était de créer une boutique en ligne moderne et esthétique, facile
+                            à administrer pour le client et optimisée pour la conversion.
+                            Le projet a été réalisé en environ 1 mois et a été un véritable challenge pour moi.
+                            Car je n'avais jamais réalisé un projet de cette envergure.
+                            J'ai beaucoup appris en le faisant, que ce soit en terme de développement, de relation client,
+                            de gestion de projet, etc.
+                        </p>
+                        <div class="project-missions">
+                            <h4>Mes missions :</h4>
+                            <ul>
+                                <li>Analyse des besoins du client</li>
+                                <li>Conception de la maquette et de l'expérience utilisateur</li>
+                                <li>Développement Front-end et Back-end de la boutique</li>
+                                <li>Intégration d'un système de paiement sécurisé avec son API (Stripe)</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Projet BottomUp -->
+                <a href="bottomup.html" class="project-card">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">BottomUp</h3>
+                            <span class="project-year">2025</span>
+                        </div>
+                        <p class="project-context">ACADÉMIQUE / VOTE PARTICIPATIF</p>
+                        <p class="project-description">
+                            Dans le cadre de mon parcours RACDV, nous avons développé un site web de vote participatif.
+                            Un site en PHP, HTML, CSS et Javascript qui a été développé en équipe de 4 en utilisant la
+                            méthode agile. Ce projet a été très enrichissant car il m'a permis d'apprendre à travailler
+                            en équipe avec des méthodes et outils de gestion (Trello, Git), il m'a aussi permis de bien
+                            comprendre comment gérer un client (ses priorités, délais, contraintes, etc).
+                        </p>
+                        <div class="project-missions">
+                            <h4>Mes missions :</h4>
+                            <ul>
+                                <li>Mise en place d'une architecture MVC</li>
+                                <li>Généralisation du code pour éviter la duplication de code</li>
+                                <li>Conception de la base de données</li>
+                                <li>Réalisation des tests unitaires</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Compétences -->
+    <section id="competences" class="section section-skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Compétences</h2>
+            </div>
+            <p class="section-intro">
+                Technologies et outils que j'utilise au quotidien, que ce soit en projet universitaire,
+                personnel ou professionnel.
             </p>
-            <a href="https://kilianda.github.io/portfolio-pro" class="btn btn-outline secondary-portfolio-btn" target="_blank">
-                Consulter mon autre portfolio
-            </a>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Langages & Frameworks</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <h4>Front-End</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Back-End</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">C</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Bases de données</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Outils & Méthodes</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <h4>Versionning</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">GitHub</span>
+                                <span class="skill-tag">GitLab</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Méthodologie</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Méthodes Agiles (Scrum)</span>
+                                <span class="skill-tag">Conception (UML)</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <h4>Outils</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">PhpStorm</span>
+                                <span class="skill-tag">Trello</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
-
-<!-- Section Contact -->
-<section id="contact" class="section section-contact">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-number">06</span>
-            <h2 class="section-title">Contact</h2>
-        </div>
-        <p class="section-intro">
-            Vous avez un projet en tête ? N'hésitez pas à me contacter.
-        </p>
-        <div class="contact-content">
-            <div class="contact-info">
-                <p>
-                    Je suis toujours ouvert à discuter de nouveaux projets, opportunités de collaboration
-                    ou simplement échanger sur le développement web.
+    </section>
+    
+    <!-- Section Loisirs -->
+    <section id="loisirs" class="section section-hobbies">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Loisirs</h2>
+            </div>
+            <p class="section-intro">
+                Au-delà du développement web, je suis passionné par la création visuelle et audiovisuelle
+            </p>
+            <div class="hobbies-content">
+                <div class="hobbies-main">
+                    <div class="hobby-card featured-hobby">
+                        <div class="hobby-icon">🎥</div>
+                        <h3>Vidéo & Photographie</h3>
+                        <p>
+                            La vidéo et la photographie sont des passions qui me permettent d'exprimer ma créativité
+                            et de capturer des moments uniques. Que ce soit dans l'automobile, pour des projets créatifs,
+                            des portraits ou des événements, j'aime créer du contenu visuel de qualité professionnelle.
+                        </p>
+                        <p>
+                            J'utilise également des drones (drone classique et drone FPV) pour réaliser des prises de vues
+                            aériennes
+                            et offrir des perspectives uniques à mes projets vidéo et photos.
+                        </p>
+                        <p class="hobby-highlight">
+                            <strong>Avantage réel :</strong> Je porte une attention particulière au design des sites que je crée et je peux proposer des services de développement web couplés avec
+                            de la production vidéo et photographique professionnelle. Idéal pour créer une présence
+                            en ligne complète avec un site web sur mesure et du contenu visuel de qualité.
+                        </p>
+                    </div>
+                </div>
+                <div class="hobbies-grid">
+                    <div class="hobby-item">
+                        <div class="hobby-item-icon">📸</div>
+                        <h4>Photographie</h4>
+                        <p>Automobile, Portraits, événements, produits, architecture</p>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-item-icon">🎬</div>
+                        <h4>Vidéo</h4>
+                        <p>Montage, colorimétrie, contenu pour les réseaux sociaux, prises de vues aériennes</p>
+                    </div>
+                    <div class="hobby-item">
+                        <div class="hobby-item-icon">🚁</div>
+                        <h4>Drones</h4>
+                        <p>Drone classique et FPV pour vidéos aériennes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hobbies-cta">
+                <p class="section-subtitle">
+                    Si cette facette (vidéo/photo) vous intéresse d'avantage, je vous redirige vers mon
+                    autre portfolio. Plus orienté sur cette facette de ma vie.
                 </p>
-                <div class="contact-links">
-                    <a href="mailto:kilian.dach@etu.umontpellier.fr" class="contact-link">
-                        <span class="contact-icon">✉</span>
-                        <span>Email</span>
-                    </a>
-                    <a href="https://github.com/KilianDa" class="contact-link" target="_blank">
-                        <span class="contact-icon">🔗</span>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/kilian-dach-70b7732aa" class="contact-link" target="_blank">
-                        <span class="contact-icon">💼</span>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="Dach-Kilian-CV.pdf" class="contact-link" target="_blank" download>
-                        <span class="contact-icon">📄</span>
-                        <span>Télécharger mon CV</span>
+                <a href="https://kilianda.github.io/portfolio-pro" class="btn btn-outline secondary-portfolio-btn" target="_blank">
+                    Consulter mon autre portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Section Contact -->
+    <section id="contact" class="section section-contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            <p class="section-intro">
+                Vous avez un projet en tête ? N'hésitez pas à me contacter.
+            </p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>
+                        Je suis toujours ouvert à discuter de nouveaux projets, opportunités de collaboration
+                        ou simplement échanger sur le développement web.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:kilian.dach@proton.me" class="contact-link">
+                            <span class="contact-icon">✉</span>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://github.com/KilianDa" class="contact-link" target="_blank">
+                            <span class="contact-icon">🔗</span>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kilian-dach-70b7732aa" class="contact-link" target="_blank">
+                            <span class="contact-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="Dach-Kilian-CV.pdf" class="contact-link" target="_blank" download>
+                            <span class="contact-icon">📄</span>
+                            <span>Télécharger mon CV</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p class="footer-text">
+                        <span class="terminal-prompt">$</span> © 2026 Kilian Dach
+                    </p>
+                </div>
+                <div class="footer-right">
+                    <a href="#accueil" class="footer-link">
+                        <span>Retour en haut</span>
+                        <span class="link-arrow">↑</span>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-left">
-                <p class="footer-text">
-                    <span class="terminal-prompt">$</span> © 2026 Kilian Dach
-                </p>
-            </div>
-            <div class="footer-right">
-                <a href="#accueil" class="footer-link">
-                    <span>Retour en haut</span>
-                    <span class="link-arrow">↑</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="script.js"></script>
+    </footer>
+    
+    <script src="script.js"></script>
 </body>
 </html>
 
