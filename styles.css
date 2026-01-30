@@ -1,3 +1,13 @@
+/* ===== CUSTOM FONTS ===== */
+@font-face {
+    font-family: 'Cabinet Grotesk';
+    src: url('fonts/cabinet-grotesk/CabinetGrotesk-Bold.woff2') format('woff2'),
+         url('fonts/cabinet-grotesk/CabinetGrotesk-Bold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
 /* ===== CSS VARIABLES ===== */
 :root {
     /* Colors - Dark Theme with Neon Accents */
@@ -48,7 +58,12 @@ html {
 
 body {
     font-family: var(--font-mono);
-    background-color: var(--color-bg-primary);
+    background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(147, 66, 212, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(130, 99, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 0% 80%, rgba(147, 66, 212, 0.06) 0%, transparent 50%),
+        var(--color-bg-primary);
+    background-attachment: fixed;
     color: var(--color-text-primary);
     line-height: 1.6;
     font-size: 16px;
@@ -440,38 +455,53 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-image-tagline {
     position: absolute;
-    top: 14%;
-    right: 8%;
+    top: 8%;
+    right: 0;
     z-index: 3;
-    font-family: var(--font-mono);
-    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
-    font-weight: 500;
-    font-style: italic;
-    color: var(--color-accent-primary);
-    letter-spacing: 0.08em;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-tertiary), var(--color-accent-primary));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-transform: lowercase;
     opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: 1s;
-    text-shadow: 0 0 20px rgba(147, 66, 212, 0.3);
     white-space: nowrap;
+    transform: rotate(-6deg);
+    transform-origin: right center;
+    animation: 
+        fadeInUp 0.6s ease forwards 1s,
+        taglineGradient 4s ease-in-out infinite 1.6s,
+        taglineFloat 3s ease-in-out infinite 1.6s;
+    filter: drop-shadow(0 0 12px rgba(147, 66, 212, 0.4));
 }
 
-/* Halo en gradient qui se fond avec le fond de page */
-.hero-image-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: -25%;
-    z-index: 1;
-    background: radial-gradient(
-        ellipse 75% 85% at 50% 50%,
-        rgba(147, 66, 212, 0.45) 0%,
-        rgba(130, 99, 241, 0.25) 25%,
-        rgba(147, 66, 212, 0.12) 50%,
-        transparent 75%
-    );
-    pointer-events: none;
-    border-radius: 50%;
+.hero-image-tagline:hover {
+    filter: drop-shadow(0 0 20px rgba(147, 66, 212, 0.6));
+    animation: 
+        fadeInUp 0.6s ease forwards 0s,
+        taglineGradient 1.5s ease-in-out infinite,
+        taglineFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes taglineGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes taglineFloat {
+    0%, 100% {
+        transform: rotate(-6deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-6deg) translateY(-4px);
+    }
 }
 
 .hero-profile-img {
@@ -480,15 +510,17 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     position: relative;
     z-index: 2;
-    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.5))
-            drop-shadow(0 0 0 1px rgba(147, 66, 212, 0.15));
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6))
+            drop-shadow(0 0 60px rgba(147, 66, 212, 0.15))
+            drop-shadow(0 0 120px rgba(130, 99, 241, 0.1));
     transition: transform var(--transition-base), filter var(--transition-base);
 }
 
 .hero-profile-img:hover {
-    transform: translateY(-8px) scale(1.03);
-    filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.55))
-            drop-shadow(0 0 40px rgba(147, 66, 212, 0.2));
+    transform: translateY(-5px) scale(1.02);
+    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.65))
+            drop-shadow(0 0 80px rgba(147, 66, 212, 0.2))
+            drop-shadow(0 0 140px rgba(130, 99, 241, 0.12));
 }
 
 .profile-img {
