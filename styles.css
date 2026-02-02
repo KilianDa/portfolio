@@ -58,12 +58,7 @@ html {
 
 body {
     font-family: var(--font-mono);
-    background: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(147, 66, 212, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 100% 50%, rgba(130, 99, 241, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse 60% 40% at 0% 80%, rgba(147, 66, 212, 0.06) 0%, transparent 50%),
-        var(--color-bg-primary);
-    background-attachment: fixed;
+    background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
     line-height: 1.6;
     font-size: 16px;
@@ -114,6 +109,25 @@ body:hover .cursor-dot {
     z-index: 9999;
     opacity: 0.6;
     mix-blend-mode: overlay;
+}
+
+/* Background video */
+.background-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(5px) brightness(0.4);
+    transform: scale(1.05);
 }
 
 /* ===== PAGE LOADER ===== */
@@ -1329,6 +1343,18 @@ h1, h2, h3, h4, h5, h6 {
     animation: fadeInUp 0.8s ease forwards;
 }
 
+/* Scroll reveal (apparition au scroll) */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1200px) {
     .hero-grid {
@@ -1522,7 +1548,7 @@ section.project-header {
     display: flex;
     align-items: center;
     padding: calc(var(--spacing-unit) * 15) 0 calc(var(--spacing-unit) * 8);
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 80%);
 }
 
 .back-link {
@@ -1533,6 +1559,7 @@ section.project-header {
     font-size: 0.875rem;
     text-decoration: none;
     color: var(--color-accent-primary);
+    margin-top: calc(var(--spacing-unit) * 6);
     margin-bottom: calc(var(--spacing-unit) * 4);
     transition: gap var(--transition-base);
 }

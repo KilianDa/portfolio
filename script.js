@@ -137,38 +137,40 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ===== SCROLL ANIMATIONS =====
-// Intersection Observer for fade-in animations
+// Intersection Observer for scroll-triggered reveal (appear on scroll down, disappear on scroll up)
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -10% 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('fade-in-up')) {
-            requestAnimationFrame(() => {
-                entry.target.classList.add('fade-in-up');
-                observer.unobserve(entry.target);
-            });
+        const el = entry.target;
+        if (entry.isIntersecting) {
+            el.classList.add('is-visible');
+        } else {
+            el.classList.remove('is-visible');
         }
     });
 }, observerOptions);
 
-// Observe sections and elements
-function initAnimations() {
-    const sections = document.querySelectorAll('.section, .project-card, .skill-category, .timeline-item, .hobby-card, .hobby-item');
-    sections.forEach(section => {
-        if (!section.classList.contains('fade-in-up')) {
-            observer.observe(section);
-        }
+// Observe sections and key blocks
+function initScrollReveal() {
+    const revealTargets = document.querySelectorAll(
+        '.section, section.project-header, .project-card, .skill-category, .timeline-item, .hobby-card, .hobby-item, .project-detail-section, .mission-card, .tech-item, .video-container, .project-video'
+    );
+
+    revealTargets.forEach(el => {
+        el.classList.add('scroll-reveal');
+        revealObserver.observe(el);
     });
 }
 
 // Initialize on DOM ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAnimations);
+    document.addEventListener('DOMContentLoaded', initScrollReveal);
 } else {
-    initAnimations();
+    initScrollReveal();
 }
 
 // ===== SCROLL EFFECTS =====
@@ -201,6 +203,12 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
+
+    // Slow down background video playback if present
+    const bgVideo = document.querySelector('.background-video video');
+    if (bgVideo) {
+        bgVideo.playbackRate = 0.5;
+    }
 });
 
 // ===== TYPING EFFECT FOR TERMINAL PROMPTS =====
