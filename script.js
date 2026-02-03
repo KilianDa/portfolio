@@ -159,7 +159,7 @@ function initScrollReveal() {
     const revealTargets = document.querySelectorAll(
         '.section, section.project-header, .project-card, .skill-category, .timeline-item, .hobby-card, .hobby-item, .project-detail-section, .mission-card, .tech-item, .video-container, .project-video'
     );
-
+    
     revealTargets.forEach(el => {
         el.classList.add('scroll-reveal');
         revealObserver.observe(el);
@@ -203,7 +203,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.body.style.opacity = '1';
     }, 100);
-
+    
     // Slow down background video playback if present
     const bgVideo = document.querySelector('.background-video video');
     if (bgVideo) {

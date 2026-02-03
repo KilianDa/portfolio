@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EatFit - Kilian</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-video">
+        <video src="assets/videos/purple-texture-background.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="grain-overlay"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader-inner">
+            <div class="page-loader-logo">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="assets/images/logo.gif" alt="Kilian" class="page-loader-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
+            </div>
+            <p class="page-loader-text">Chargement du portfolio...</p>
+            <div class="page-loader-bar">
+                <div class="page-loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand" style="text-decoration: none; color: inherit;">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="assets/images/logo.gif" alt="Kilian" class="nav-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#accueil" class="nav-link" data-text="00">Accueil</a></li>
+                <li><a href="index.html#apropos" class="nav-link" data-text="01">À propos</a></li>
+                <li><a href="index.html#parcours" class="nav-link" data-text="02">Parcours</a></li>
+                <li><a href="index.html#projets" class="nav-link" data-text="03">Projets</a></li>
+                <li><a href="index.html#competences" class="nav-link" data-text="04">Compétences</a></li>
+                <li><a href="index.html#loisirs" class="nav-link" data-text="05">Loisirs</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-text="06">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projets" class="back-link">← Retour aux projets</a>
+            <div class="project-header-content">
+                <h1 class="project-header-title">EatFit</h1>
+                <p class="project-header-subtitle">Application mobile personnelle | Nutrition & entraînement | 2025</p>
+                <p class="project-header-description">
+                    Conception d'une application mobile pour suivre ses données en nutrition et entraînement.
+                    Réalisée en React Native avec Expo Go sur l'IDE Cursor (IA intégrée).                     L'app permet de journaliser
+                    les repas, suivre les calories et l'hydratation, gérer des programmes et séances d'entraînement,
+                    avec synchronisation cloud (Supabase) et base locale SQLite. Intégration de l'API Open Food Facts
+                    pour le scan de codes-barres et de l'API Perplexity pour la reconnaissance des aliments par photo (IA).
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project Details -->
+    <section class="section">
+        <div class="container">
+            <div class="project-details">
+                <!-- Contexte -->
+                <div class="project-detail-section">
+                    <h2>Contexte du projet</h2>
+                    <p>
+                        EatFit est un projet personnel d'application mobile cross-platform (iOS / Android) visant à
+                        centraliser le suivi nutritionnel et sportif : repas, apports caloriques, eau, programmes
+                        d'entraînement et séances. Le développement a été mené avec Expo et React Native pour un
+                        déploiement rapide sur Expo Go, en utilisant Cursor comme IDE avec assistance IA pour
+                        accélérer la conception des écrans et la logique métier.
+                    </p>
+                </div>
+                
+                <!-- Missions -->
+                <div class="project-detail-section">
+                    <h2>Mes missions</h2>
+                    <div class="missions-grid">
+                        <div class="mission-card">
+                            <h3>Nutrition</h3>
+                            <p>Écrans repas (petit-déj, déjeuner, dîner, collation), ajout d'aliments, scan de
+                                codes-barres (API Open Food Facts), reconnaissance des aliments par photo (API Perplexity),
+                                suivi des calories et objectifs, hydratation et repas enregistrés.</p>
+                            </div>
+                            <div class="mission-card">
+                                <h3>Entraînement</h3>
+                                <p>Programmes et séances, gestion des exercices, suivi des performances (PR, volume),
+                                    statistiques sous forme de graphiques et historique des entraînements sous forme de calendrier.</p>
+                                </div>
+                                <div class="mission-card">
+                                    <h3>APIs & données</h3>
+                                    <p>Open Food Facts pour les codes-barres, Perplexity pour la reconnaissance d'aliments
+                                        par image. Base locale SQLite (expo-sqlite), synchronisation Supabase, export et offline.</p>
+                                    </div>
+                                    <div class="mission-card">
+                                        <h3>UX & outils</h3>
+                                        <p>Interface moderne (composants réutilisables, thème), TypeScript et Expo Router (file-based routing).</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Technologies -->
+                            <div class="project-detail-section">
+                                <h2>Technologies utilisées</h2>
+                                <div class="tech-grid">
+                                    <div class="tech-item">
+                                        <h4>Mobile</h4>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag">React Native</span>
+                                            <span class="tech-tag">Expo</span>
+                                            <span class="tech-tag">Expo Go</span>
+                                            <span class="tech-tag">TypeScript</span>
+                                        </div>
+                                    </div>
+                                    <div class="tech-item">
+                                        <h4>Données & APIs</h4>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag">Open Food Facts</span>
+                                            <span class="tech-tag">Perplexity API</span>
+                                            <span class="tech-tag">SQLite (expo-sqlite)</span>
+                                            <span class="tech-tag">Supabase</span>
+                                            <span class="tech-tag">AsyncStorage</span>
+                                        </div>
+                                    </div>
+                                    <div class="tech-item">
+                                        <h4>Outils</h4>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag">Cursor AI</span>
+                                            <span class="tech-tag">Expo Router</span>
+                                            <span class="tech-tag">React Navigation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Résultats -->
+                            <div class="project-detail-section">
+                                <h2>Résultats et apprentissages</h2>
+                                <p>
+                                    Ce projet m'a permis de monter en compétence sur React Native et Expo, de concevoir une
+                                    app complète (nutrition + entraînement) avec une base locale et une sync cloud, et d'utiliser
+                                    l'IA intégrée à Cursor pour avancer plus vite sur l'UI et la logique. J'ai intégré l'API
+                                    Open Food Facts pour le scan de codes-barres et l'API Perplexity pour la reconnaissance
+                                    des aliments par photo. EatFit reste en développement et n'est pas encore disponible sur les stores.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p class="footer-text">
+                        <span class="terminal-prompt">$</span> © 2026 Kilian Dach
+                    </p>
+                </div>
+                <div class="footer-right">
+                    <a href="index.html#accueil" class="footer-link">
+                        <span>Retour en haut</span>
+                        <span class="link-arrow">↑</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
