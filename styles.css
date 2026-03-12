@@ -889,16 +889,12 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== PROJECTS SECTION ===== */
 .section-projects {
     background-color: var(--color-bg-secondary);
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
 }
 
 .projects-grid {
-    position: relative;
-    width: 100%;
-    min-height: 360px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(var(--spacing-unit) * 4);
 }
 
 .project-card {
@@ -908,11 +904,10 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: inherit;
     display: block;
-    position: absolute;
-    inset: 0;
+    position: relative;
     cursor: pointer;
     overflow: hidden;
-    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background-color var(--transition-base), opacity var(--transition-base);
+    transition: all var(--transition-base);
 }
 
 .project-card::before {
@@ -932,9 +927,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-card:hover {
     border-color: var(--color-border-bright);
-    transform: translateY(-6px);
-    box-shadow: var(--glow-primary);
-    background-color: var(--color-bg-secondary);
+    transform: translateX(8px);
 }
 
 .project-featured {
@@ -1040,25 +1033,6 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 500px;
     opacity: 1;
     transform: translateY(0);
-}
-
-.project-card {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-}
-
-.project-card--active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-    .project-card {
-        padding: calc(var(--spacing-unit) * 4);
-        inset: 0;
-    }
 }
 
 .tech-tag {
