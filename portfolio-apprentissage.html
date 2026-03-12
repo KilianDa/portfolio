@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio d'apprentissage - Kilian</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="learning-portfolio">
+    <div class="background-video">
+        <video src="assets/videos/purple-texture-background.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="grain-overlay"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader-inner">
+            <div class="page-loader-logo">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="assets/images/logo.gif" alt="Kilian" class="page-loader-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
+            </div>
+            <p class="page-loader-text">Chargement du portfolio...</p>
+            <div class="page-loader-bar">
+                <div class="page-loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation (page cachée, pas de lien dans le menu) -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html#accueil" class="nav-brand" style="text-decoration: none; color: inherit;">
+                <span class="nav-brand-bracket">[</span>
+                <span class="nav-brand-name"><img src="assets/images/logo.gif" alt="Kilian" class="nav-logo-gif"></span>
+                <span class="nav-brand-bracket">]</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#accueil" class="nav-link" data-text="00">Accueil</a></li>
+                <li><a href="index.html#apropos" class="nav-link" data-text="01">À propos</a></li>
+                <li><a href="index.html#parcours" class="nav-link" data-text="02">Parcours</a></li>
+                <li><a href="index.html#projets" class="nav-link" data-text="03">Projets</a></li>
+                <li><a href="index.html#competences" class="nav-link" data-text="04">Compétences</a></li>
+                <li><a href="index.html#loisirs" class="nav-link" data-text="05">Loisirs</a></li>
+                <li><a href="index.html#contact" class="nav-link" data-text="06">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- En-tête Portfolio d'apprentissage -->
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#parcours" class="back-link">← Retour au portfolio</a>
+            <div class="project-header-content">
+                <div class="project-header-badge">Portfolio d'apprentissage</div>
+                <h1 class="project-header-title">Parcours RACDV — BUT Informatique</h1>
+                <p class="project-header-subtitle">Référentiel de compétences & projets</p>
+                <p class="project-header-description">
+                    Cette page est un portfolio d'apprentissage destiné à l'IUT. Elle met en relation plusieurs projets
+                    réalisés en BUT 1 et 2 (académiques, personnels et freelance) avec le référentiel de compétences du
+                    parcours A « Réalisation d'applications : conception, développement, validation ». Elle se concentre
+                    sur trois compétences qui s'arrêtent au niveau 2 (C3, C4, C5) et détaille, pour chaque apprentissage
+                    critique (AC) et composante essentielle (CE), comment je les ai travaillés à travers des projets
+                    concrets.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenu -->
+    <section class="section section-learning">
+        <div class="container">
+            <div class="project-details">
+                <!-- Projets utilisés -->
+                <div class="project-detail-section">
+                    <h2>Projets utilisés dans ce portfolio d'apprentissage</h2>
+                    <p>
+                        Les projets suivants servent de support aux analyses de compétences. Ils couvrent différentes
+                        situations (projet académique, freelance, projet personnel, projet en duo) et me permettent
+                        d'illustrer les compétences C3, C4 et C5 jusqu'au niveau 2.
+                    </p>
+                    <div class="missions-grid">
+                        <div class="mission-card">
+                            <h3>BottomUp — Système de vote participatif</h3>
+                            <p><strong>Contexte :</strong> Projet académique (BUT S3, parcours RACDV).</p>
+                            <p><strong>Dates & durée :</strong> Octobre – Décembre 2025, environ 8 à 10 semaines.</p>
+                            <p><strong>Équipe :</strong> Groupe de 4 étudiants, méthode agile (Scrum).</p>
+                            <p><strong>Objectifs :</strong> Concevoir et développer une application web complète de vote
+                                participatif, de l'analyse des besoins à la mise en œuvre technique.</p>
+                            <p><strong>Contraintes :</strong> Délais fixés par le semestre, exigences du client
+                                pédagogique, architecture MVC, utilisation de PHP, SQL, HTML/CSS/JS.</p>
+                            <p><strong>Démarche :</strong> Itérations courtes, revues régulières, utilisation de Trello,
+                                Git/GitLab, documentation et tests unitaires.</p>
+                            <p><strong>Implication & autonomie :</strong> Forte implication sur l'architecture MVC, la
+                                généralisation du code, la conception de la base de données et les tests.</p>
+                            <p><strong>Traces :</strong> Page projet BottomUp du portfolio, archives vidéo, code source
+                                versionné sur Git/GitLab.</p>
+                        </div>
+                        <div class="mission-card">
+                            <h3>V2C Shop — Boutique e‑commerce</h3>
+                            <p><strong>Contexte :</strong> Projet freelance pour une petite marque de t‑shirts.</p>
+                            <p><strong>Dates & durée :</strong> Octobre 2024, projet d'environ 1 mois.</p>
+                            <p><strong>Équipe :</strong> Travail individuel en relation directe avec le client.</p>
+                            <p><strong>Objectifs :</strong> Livrer une boutique en ligne moderne, sécurisée et simple à
+                                administrer (gestion produits, panier, paiement Stripe).</p>
+                            <p><strong>Contraintes :</strong> Budget limité, délais, image de marque à respecter,
+                                intégration de Stripe, hébergement et déploiement.</p>
+                            <p><strong>Démarche :</strong> Analyse des besoins, maquettage, développement full‑stack,
+                                tests, mise en production et accompagnement du client.</p>
+                            <p><strong>Implication & autonomie :</strong> Projet mené de bout en bout (analyse, conception,
+                                développement, déploiement), forte autonomie et responsabilité.</p>
+                            <p><strong>Traces :</strong> Page projet V2C, vidéo de démonstration, échanges client,
+                                versionnement Git.</p>
+                        </div>
+                        <div class="mission-card">
+                            <h3>EatFit — Application mobile nutrition & entraînement</h3>
+                            <p><strong>Contexte :</strong> Projet personnel de fin de BUT 2.</p>
+                            <p><strong>Dates & durée :</strong> 2025, projet mené sur plusieurs semaines en parallèle
+                                des cours.</p>
+                            <p><strong>Équipe :</strong> Travail individuel.</p>
+                            <p><strong>Objectifs :</strong> Concevoir une application mobile cross‑platform (iOS/Android)
+                                pour suivre ses repas, calories, hydratation et séances d'entraînement avec synchronisation
+                                cloud.</p>
+                            <p><strong>Contraintes :</strong> Stack imposée (React Native, Expo, TypeScript), intégration
+                                d'APIs (Open Food Facts, Perplexity), gestion d'une base locale SQLite et de Supabase.</p>
+                            <p><strong>Démarche :</strong> Itérations fonctionnelles, prototypage rapide avec Cursor AI,
+                                mise en place d'une architecture modulaire, gestion des données et des synchronisations.</p>
+                            <p><strong>Implication & autonomie :</strong> Autonomie complète sur la conception, le choix
+                                technique, la gestion des données et l'UX.</p>
+                            <p><strong>Traces :</strong> Page projet EatFit, vidéo de démonstration, code source et schémas
+                                de données.</p>
+                        </div>
+                        <div class="mission-card">
+                            <h3>Pokémon TCG — Jeu de cartes en JavaFX</h3>
+                            <p><strong>Contexte :</strong> SAE de première année, jeu de cartes inspiré du Pokémon TCG.</p>
+                            <p><strong>Dates & durée :</strong> BUT 1, projet réalisé sur plusieurs semaines.</p>
+                            <p><strong>Équipe :</strong> Projet en duo.</p>
+                            <p><strong>Objectifs :</strong> Implémenter un jeu de cartes avec règles, gestion des états,
+                                interface JavaFX et persistance minimale des données.</p>
+                            <p><strong>Contraintes :</strong> Respect du cahier des charges de la SAE, temps limité,
+                                prise en main de JavaFX et des concepts d'architecture logicielle.</p>
+                            <p><strong>Démarche :</strong> Répartition claire des rôles, modélisation des cartes et états
+                                de jeu, itérations fréquentes de tests.</p>
+                            <p><strong>Implication & autonomie :</strong> Responsable d'une partie des mécaniques de jeu
+                                et de l'interface, autonomie croissante sur la conception orientée objet.</p>
+                            <p><strong>Traces :</strong> Code Java/JavaFX, rapports de SAE, démonstrations orales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 3 -->
+                <div class="project-detail-section">
+                    <h2>Compétence 3 — Administrer des systèmes informatiques communicants complexes</h2>
+                    <p>
+                        Sur les deux premières années, cette compétence est travaillée principalement au niveau de la
+                        mise en place de services applicatifs, de la configuration d'environnements de développement et
+                        du déploiement de services web.
+                    </p>
+                    <p><strong>Apprentissages critiques (AC) ciblés :</strong></p>
+                    <ul class="learning-list">
+                        <li><strong>AC 1 :</strong> Concevoir et développer des applications communicantes.</li>
+                        <li><strong>AC 2 :</strong> Utiliser des serveurs et des services réseaux virtualisés.</li>
+                        <li><strong>AC 3 :</strong> Sécuriser les services et données d'un système.</li>
+                    </ul>
+                    <p><strong>Composantes essentielles (CE) associées :</strong> CE 1 (sécurisation du SI), CE 2
+                        (bonnes pratiques architecturales et de sécurité), CE 3 (qualité de service), CE 4 (continuité
+                        d’activité).</p>
+
+                    <div class="learning-grid">
+                        <div class="learning-card">
+                            <h3>BottomUp</h3>
+                            <p>
+                                <strong>AC 1 — Applications communicantes :</strong> l'application web de vote accède à
+                                une base de données SQL via PHP et est déployée dans un environnement Docker. J'ai
+                                participé à la mise en place de l'architecture MVC et des routes, ce qui m'a permis de
+                                comprendre comment une application dialogue avec ses services, en veillant à la qualité
+                                de service (CE 3).
+                            </p>
+                            <p>
+                                <strong>AC 2 — Services virtualisés :</strong> utilisation de <span class="tech-tag">Docker</span>
+                                pour lancer les services (PHP, serveur web, base de données) et configuration de
+                                <span class="tech-tag">phpMyAdmin</span> pour administrer la base, en respectant les bonnes
+                                pratiques d'architecture (CE 2) et la continuité de service (CE 4).
+                            </p>
+                            <p>
+                                <strong>AC 3 / CE 1–2 — Sécurisation :</strong> j'ai veillé à la validation des entrées
+                                et à la gestion des droits (rôles de vote, accès aux fonctionnalités) en respectant les
+                                bonnes pratiques vues en cours (R3.01, R3.06).
+                            </p>
+                            <p><strong>Traces :</strong> fichiers de configuration Docker, scripts d'accès BD, captures
+                                d’écran de l’interface d’admin.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>V2C Shop</h3>
+                            <p>
+                                <strong>AC 1 — Application communicante :</strong> application web complète (front
+                                <span class="tech-tag">HTML/CSS/JS</span>, back <span class="tech-tag">Node.js</span>)
+                                communiquant avec l’API <span class="tech-tag">Stripe</span> et la base de données.
+                            </p>
+                            <p>
+                                <strong>AC 2 — Services réseaux & déploiement :</strong> mise en production de la
+                                boutique sur un hébergement web, configuration du serveur, des variables d’environnement
+                                (clés Stripe) et du nom de domaine.
+                            </p>
+                            <p>
+                                <strong>AC 3 / CE 1–3 — Sécurité et qualité de service :</strong> gestion sécurisée des
+                                paiements (Stripe), utilisation du HTTPS, gestion des erreurs serveur et des cas limites
+                                (paiements refusés, stock insuffisant).
+                            </p>
+                            <p><strong>Traces :</strong> code d’intégration Stripe, captures de configuration d’hébergement,
+                                vidéo de démonstration.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>EatFit</h3>
+                            <p>
+                                <strong>AC 1 — Application mobile communicante :</strong> l’app mobile consomme des
+                                APIs externes (<span class="tech-tag">Open Food Facts</span>, <span class="tech-tag">Perplexity</span>)
+                                et échange avec une base de données distante <span class="tech-tag">Supabase</span>, tout en
+                                offrant une qualité de service correcte côté utilisateur (CE 3).
+                            </p>
+                            <p>
+                                <strong>AC 3 — Sécurité & données :</strong> gestion des données personnelles (habitudes
+                                alimentaires, entraînements) en veillant à la confidentialité (stockage local
+                                chiffré côté OS, utilisation de comptes distincts sur Supabase), ce qui rejoint les
+                                composantes essentielles CE 1 (sécurisation du SI) et CE 2 (bonnes pratiques).
+                            </p>
+                            <p><strong>Traces :</strong> configuration Supabase, schémas des tables, extraits de code de
+                                requêtes réseau.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 4 -->
+                <div class="project-detail-section">
+                    <h2>Compétence 4 — Gérer des données de l’information</h2>
+                    <p>
+                        Cette compétence est très présente dans mes projets : modélisation, mise en place et optimisation
+                        de bases de données, ainsi que l’interaction avec les applications (SQL, NoSQL, APIs).
+                    </p>
+                    <p><strong>Apprentissages critiques (AC) ciblés :</strong></p>
+                    <ul class="learning-list">
+                        <li><strong>AC 1 :</strong> Optimiser les modèles de données de l'entreprise.</li>
+                        <li><strong>AC 2 :</strong> Assurer la confidentialité des données (intégrité et sécurité).</li>
+                        <li><strong>AC 3 :</strong> Organiser la restitution de données (programmation, visualisation).</li>
+                        <li><strong>AC 4 :</strong> Manipuler des données hétérogènes.</li>
+                    </ul>
+                    <p><strong>Composantes essentielles (CE) associées :</strong> CE 1 (respect des réglementations),
+                        CE 2 (enjeux économiques/sociétaux/écologiques), CE 3 (bases mathématiques), CE 4
+                        (cohérence et qualité).</p>
+
+                    <div class="learning-grid">
+                        <div class="learning-card">
+                            <h3>BottomUp</h3>
+                            <p>
+                                <strong>AC 1 — Modélisation & optimisation :</strong> conception du schéma relationnel
+                                (tables, clés étrangères) et normalisation pour éviter les redondances. Travail directement
+                                relié aux ressources <span class="tech-tag">R3.07 SQL</span>.
+                            </p>
+                            <p>
+                                <strong>AC 3 — Restitution des données :</strong> requêtes SQL filtrant les sondages,
+                                résultats agrégés (comptage de votes) et restitution claire dans l’interface.
+                            </p>
+                            <p>
+                                <strong>CE 4 — Cohérence & qualité :</strong> contraintes d’intégrité, clés étrangères
+                                et validations côté serveur pour assurer la cohérence des votes.
+                            </p>
+                            <p><strong>Traces :</strong> MCD/MLD, scripts SQL de création de base, extraits de code
+                                PHP pour les requêtes.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>V2C Shop</h3>
+                            <p>
+                                <strong>AC 1 / AC 3 — Données produits & commandes :</strong> modélisation des produits,
+                                clients, commandes et paniers. Les données sont restituées via des vues filtrées
+                                (produits par catégorie, paniers, historiques).
+                            </p>
+                            <p>
+                                <strong>AC 2 / CE 1–2 — Confidentialité :</strong> gestion des informations de paiement
+                                via Stripe (pas de stockage des numéros de carte), respect des bonnes pratiques de
+                                sécurité des données personnelles (RGPD côté client).
+                            </p>
+                            <p><strong>Traces :</strong> schémas de base, extraits de code de gestion des commandes,
+                                configuration Stripe (clés publiques/privées).</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>EatFit</h3>
+                            <p>
+                                <strong>AC 1 / AC 4 — Données hétérogènes :</strong> combinaison de données locales
+                                (<span class="tech-tag">SQLite</span>), distantes (<span class="tech-tag">Supabase</span>)
+                                et issues d’APIs (Open Food Facts, Perplexity). J’ai dû harmoniser ces sources et
+                                définir des modèles TypeScript cohérents, en veillant à la cohérence et à la qualité
+                                des données (CE 4) et aux enjeux de stockage (CE 2).
+                            </p>
+                            <p>
+                                <strong>AC 3 — Restitution :</strong> écrans de statistiques (calories consommées,
+                                hydratation, volumes d’entraînement) permettant de visualiser l’évolution de l’utilisateur,
+                                en s’appuyant sur des bases mathématiques simples (CE 3) et une restitution claire (CE 4).
+                            </p>
+                            <p><strong>Traces :</strong> définitions de types, schémas des tables, captures des écrans de
+                                statistiques.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>Pokémon TCG (JavaFX)</h3>
+                            <p>
+                                <strong>AC 3 — Restitution via l’interface :</strong> affichage des cartes, états de la
+                                partie et informations de jeu directement dans l’UI JavaFX (listes, zones de texte,
+                                jauges de points de vie), en garantissant une restitution cohérente et lisible (CE 4).
+                            </p>
+                            <p>
+                                <strong>AC 4 — Données hétérogènes :</strong> gestion d’objets complexes (cartes,
+                                effets, états) et de collections en mémoire, parfois initialisées à partir de fichiers
+                                de configuration, en s’appuyant sur des raisonnements structurés (CE 3) et une bonne
+                                organisation des données (CE 4).
+                            </p>
+                            <p><strong>Traces :</strong> classes Java de modèle de données, captures de l’interface,
+                                compte‑rendu de SAE.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compétence 5 -->
+                <div class="project-detail-section">
+                    <h2>Compétence 5 — Conduire un projet</h2>
+                    <p>
+                        La conduite de projet est particulièrement visible dans BottomUp (projet académique en équipe) et
+                        V2C Shop (freelance), mais aussi dans EatFit (auto‑gestion d’un projet personnel).
+                    </p>
+                    <p><strong>Apprentissages critiques (AC) ciblés :</strong></p>
+                    <ul class="learning-list">
+                        <li><strong>AC 1 :</strong> Identifier les processus présents dans une organisation.</li>
+                        <li><strong>AC 2 :</strong> Formaliser les besoins du client et de l'utilisateur.</li>
+                        <li><strong>AC 3 :</strong> Identifier les critères de faisabilité d'un projet.</li>
+                        <li><strong>AC 4 :</strong> Définir et mettre en œuvre une démarche de suivi de projet.</li>
+                    </ul>
+                    <p><strong>Composantes essentielles (CE) associées :</strong> CE 1 (communication avec les acteurs),
+                        CE 2 (respect des règles juridiques et normes), CE 3 (gestion responsable et durable),
+                        CE 4 (démarche proactive, créative et critique).</p>
+
+                    <div class="learning-grid">
+                        <div class="learning-card">
+                            <h3>BottomUp</h3>
+                            <p>
+                                <strong>AC 1 / AC 2 — Processus & besoins :</strong> identification des processus de vote
+                                (création de sondages, collecte et dépouillement) et formalisation des besoins du « client
+                                » pédagogique à travers des user stories et des maquettes.
+                            </p>
+                            <p>
+                                <strong>AC 3 — Faisabilité :</strong> discussion en équipe des choix techniques (PHP,
+                                SQL, MVC, Docker) au regard des contraintes de temps et de compétences.
+                            </p>
+                            <p>
+                                <strong>AC 4 / CE 1–4 — Suivi de projet :</strong> utilisation de Trello, sprints Scrum,
+                                revues régulières et rétrospectives. J’ai pris part activement à la planification et au
+                                suivi des tâches, en adoptant une démarche critique sur notre avancement.
+                            </p>
+                            <p><strong>Traces :</strong> tableau Trello, backlog, livrables intermédiaires, rapport de SAE.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>V2C Shop</h3>
+                            <p>
+                                <strong>AC 1 — Processus métier :</strong> modélisation du parcours client (navigation,
+                                ajout au panier, paiement, confirmation) et des processus internes (gestion de stock,
+                                préparation des commandes).
+                            </p>
+                            <p>
+                                <strong>AC 2 — Formalisation des besoins :</strong> échanges avec le client, rédaction
+                                d’un cahier des charges simplifié, maquettage de l’interface (wireframes).
+                            </p>
+                            <p>
+                                <strong>AC 3 — Faisabilité :</strong> choix d’une architecture et de technologies
+                                maîtrisées pour respecter les délais et le budget (HTML/CSS/JS, Node.js, Stripe).
+                            </p>
+                            <p>
+                                <strong>AC 4 / CE 1–4 — Suivi & communication :</strong> points réguliers avec le client,
+                                gestion des retours, ajustements de fonctionnalités. Ce projet a renforcé ma capacité à
+                                communiquer efficacement et à prendre des décisions techniques responsables.
+                            </p>
+                            <p><strong>Traces :</strong> échanges mail / messages, cahier des charges, maquettes, versions
+                                successives du site.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>EatFit</h3>
+                            <p>
+                                <strong>AC 2 — Besoins utilisateur :</strong> analyse de mes propres besoins comme
+                                utilisateur cible (suivi nutritionnel/sportif), identification des fonctionnalités
+                                prioritaires (journal, objectifs, statistiques), et communication de ces choix dans
+                                une démarche centrée utilisateur (CE 1).
+                            </p>
+                            <p>
+                                <strong>AC 3 — Faisabilité :</strong> cadrage du périmètre fonctionnel par rapport au temps
+                                disponible en BUT 2, choix d’un MVP atteignable.
+                            </p>
+                            <p>
+                                <strong>AC 4 / CE 4 — Démarche proactive :</strong> gestion du projet en autonomie,
+                                utilisation de Cursor AI pour accélérer certaines tâches, mise en place d’une feuille de
+                                route personnelle (features par itération), ce qui illustre une attitude proactive et créative.
+                            </p>
+                            <p><strong>Traces :</strong> to‑do lists, maquettes d’écrans, versions successives de l’app.</p>
+                        </div>
+                        <div class="learning-card">
+                            <h3>Pokémon TCG (JavaFX)</h3>
+                            <p>
+                                <strong>AC 2 — Formalisation des besoins :</strong> transformation du cahier des charges
+                                de la SAE en fonctionnalités concrètes (gestion des tours, types de cartes, conditions de
+                                victoire), en respectant les règles fixées par l’enseignant (CE 2).
+                            </p>
+                            <p>
+                                <strong>AC 4 / CE 1–3 — Suivi de projet en duo :</strong> répartition des tâches avec mon
+                                binôme, synchronisation régulière, documentation du code et préparation de la soutenance,
+                                en communiquant efficacement (CE 1) et en adoptant une démarche responsable (CE 3).
+                            </p>
+                            <p><strong>Traces :</strong> planning, répartition des rôles, livrables de la SAE.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p class="footer-text">
+                        <span class="terminal-prompt">$</span> © 2026 Kilian Dach
+                    </p>
+                </div>
+                <div class="footer-right">
+                    <a href="index.html#accueil" class="footer-link">
+                        <span>Retour au portfolio principal</span>
+                        <span class="link-arrow">↑</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

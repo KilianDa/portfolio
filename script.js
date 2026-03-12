@@ -238,8 +238,28 @@ techTags.forEach((tag, index) => {
     tag.style.animationDelay = `${index * 0.05}s`;
 });
 
-// ===== PROJECT CARDS INTERACTIVE =====
+// ===== PROJECT CARDS INTERACTIVE & SCROLL LOCK =====
 const projectCards = document.querySelectorAll('.project-card');
+const projectsSection = document.getElementById('projets');
+let currentProjectIndex = 0;
+let projectScrollLocked = false;
+let lastProjectScrollTime = 0;
+let touchStartY = null;
+
+function setActiveProjectCard(index) {
+    if (!projectCards.length) return;
+    currentProjectIndex = Math.max(0, Math.min(index, projectCards.length - 1));
+    projectCards.forEach((card, i) => {
+        card.classList.toggle('project-card--active', i === currentProjectIndex);
+        if (i !== currentProjectIndex) {
+            card.classList.remove('project-card--expanded');
+        }
+    });
+}
+
+// Initial active card
+setActiveProjectCard(0);
+
 projectCards.forEach(card => {
     card.addEventListener('mouseenter', (e) => {
         const rect = card.getBoundingClientRect();
@@ -249,7 +269,113 @@ projectCards.forEach(card => {
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
     });
+
+    // Mobile behaviour: first tap expands card, second tap navigates
+    card.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            const isExpanded = card.classList.contains('project-card--expanded');
+            if (!isExpanded) {
+                e.preventDefault();
+                projectCards.forEach(c => c.classList.remove('project-card--expanded'));
+                card.classList.add('project-card--expanded');
+            }
+            // si déjà étendue, on laisse le lien naviguer
+        }
+    });
 });
+
+function handleProjectStep(direction) {
+    if (!projectScrollLocked || !projectsSection) return;
+    const now = Date.now();
+    if (now - lastProjectScrollTime < 600) return;
+
+    if (direction > 0) {
+        // scroll vers le bas
+        if (currentProjectIndex < projectCards.length - 1) {
+            setActiveProjectCard(currentProjectIndex + 1);
+        } else {
+            // dernière carte -> déverrouiller et descendre à la section suivante
+            projectScrollLocked = false;
+            const nextSection = document.getElementById('competences');
+            if (nextSection) {
+                window.scrollTo({
+                    top: nextSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    } else if (direction < 0) {
+        // scroll vers le haut
+        if (currentProjectIndex > 0) {
+            setActiveProjectCard(currentProjectIndex - 1);
+        } else {
+            // première carte -> déverrouiller et remonter à la section précédente
+            projectScrollLocked = false;
+            const prevSection = document.getElementById('parcours');
+            if (prevSection) {
+                window.scrollTo({
+                    top: prevSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+
+    lastProjectScrollTime = now;
+}
+
+// Verrouillage du scroll dans la section projets
+window.addEventListener('scroll', () => {
+    if (!projectsSection) return;
+    const rect = projectsSection.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    // Activer le lock quand la section projets est bien en vue
+    if (!projectScrollLocked && rect.top <= 80 && rect.bottom > viewportHeight * 0.6) {
+        projectScrollLocked = true;
+        setActiveProjectCard(currentProjectIndex || 0);
+        window.scrollTo({
+            top: projectsSection.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    }
+});
+
+// Gestion de la molette pour stepper les projets
+window.addEventListener('wheel', (e) => {
+    if (!projectScrollLocked) return;
+    e.preventDefault();
+    if (e.deltaY > 5) {
+        handleProjectStep(1);
+    } else if (e.deltaY < -5) {
+        handleProjectStep(-1);
+    }
+}, { passive: false });
+
+// Gestes tactiles (mobile)
+window.addEventListener('touchstart', (e) => {
+    if (!projectScrollLocked) return;
+    if (e.touches && e.touches.length === 1) {
+        touchStartY = e.touches[0].clientY;
+    }
+}, { passive: false });
+
+window.addEventListener('touchmove', (e) => {
+    if (!projectScrollLocked || touchStartY === null) return;
+    if (e.touches && e.touches.length === 1) {
+        const currentY = e.touches[0].clientY;
+        const deltaY = touchStartY - currentY;
+        if (Math.abs(deltaY) > 40) {
+            e.preventDefault();
+            if (deltaY > 0) {
+                handleProjectStep(1);
+            } else {
+                handleProjectStep(-1);
+            }
+            touchStartY = currentY;
+        }
+    }
+}, { passive: false });
 
 // ===== KEYBOARD NAVIGATION =====
 document.addEventListener('keydown', (e) => {
