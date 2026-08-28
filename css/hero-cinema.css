@@ -24,6 +24,10 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  /* svh suit la hauteur réelle visible sur mobile (barre d'adresse qui
+     se rétracte) plutôt que la hauteur pleine potentiellement plus
+     grande que le viewport visible ; ignoré si non supporté */
+  height: 100svh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -273,7 +277,8 @@
   border-color: var(--color-white);
 }
 
-/* --- Mobile : pas de scrub, vidéo en boucle plein écran --- */
+/* --- Mobile : même scrub qu'en desktop (jeu de frames plus léger,
+   voir hero-cinema.js), juste la mise en page qui s'adapte --- */
 @media (max-width: 860px) {
   .hero--cinema {
     min-height: 0;
@@ -281,19 +286,18 @@
     padding-bottom: 0;
   }
 
-  .hero-scrub {
-    height: auto;
-  }
-
   .hero-scrub__sticky {
-    position: relative;
-    height: 100vh;
-    height: 100svh;
     min-height: 560px;
   }
 
   .hero__progress {
     display: none;
+  }
+
+  /* Masqué par défaut en dessous de 860px (responsive.css) : on le
+     réaffiche puisque le scrub, lui, reste actif sur mobile */
+  .hero--cinema .hero__scroll {
+    display: block;
   }
 
   .hero--cinema .hero__inner {

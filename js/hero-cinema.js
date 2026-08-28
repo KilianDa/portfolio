@@ -80,18 +80,21 @@
     return;
   }
 
-  if (isMobile || !canvas || !canvas.getContext) {
+  if (!canvas || !canvas.getContext) {
     enableVideoMode(false);
     return;
   }
 
   /* ------------------------------------------------------------------
      Mode scrub : séquence de frames dessinée sur canvas, pilotée
-     par la position de scroll dans le rail .hero-scrub
+     par la position de scroll dans le rail .hero-scrub.
+     Même mécanique sur mobile, avec un jeu de frames allégé (moins
+     de frames, plus basse résolution) pour limiter la data et le CPU.
      ------------------------------------------------------------------ */
-  var FRAME_COUNT = window.HERO_FRAME_COUNT || 100;
+  var FRAME_COUNT = (isMobile ? window.HERO_FRAME_COUNT_MOBILE : window.HERO_FRAME_COUNT) || 100;
+  var FRAME_DIR = isMobile ? 'assets/hero-frames-mobile/' : 'assets/hero-frames/';
   var FRAME_PATH = function (i) {
-    return 'assets/hero-frames/frame-' + String(i + 1).padStart(3, '0') + '.jpg';
+    return FRAME_DIR + 'frame-' + String(i + 1).padStart(3, '0') + '.jpg';
   };
 
   var ctx = canvas.getContext('2d');
