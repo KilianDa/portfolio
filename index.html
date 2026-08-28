@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/portfolio.css">
+<link rel="stylesheet" href="css/hero-cinema.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/responsive.css">
 <script>
@@ -124,29 +125,52 @@
 
 <main>
 
-  <!-- HERO -->
-  <section class="hero" id="accueil">
-    <span class="hero__watermark" aria-hidden="true">K</span>
-    <div class="container hero__inner">
-      <p class="hero__eyebrow">Étudiant BUT Informatique — Montpellier</p>
-      <h1 class="hero__title" id="heroTitle">
-        <span class="hero__line">Kilian Dach,</span>
-        <span class="hero__line">développeur web</span>
-        <span class="hero__line"><em>full-stack</em>.</span>
-      </h1>
-      <p class="hero__subtitle reveal">Je transforme des idées en applications web performantes. Du modèle de données à l'interface, je soigne autant la logique que le design.</p>
-      <div class="hero__actions reveal">
-        <a href="#projets" class="btn btn--primary">Voir mes projets</a>
-        <a href="assets/documents/Dach-Kilian-CV.pdf" class="btn btn--secondary" target="_blank" download data-cv-link>Télécharger mon CV</a>
+  <!-- HERO CINÉMA — vidéo orbitale scrubbée au scroll -->
+  <section class="hero hero--cinema" id="accueil">
+    <div class="hero-scrub" id="heroScrub">
+      <div class="hero-scrub__sticky">
+
+        <div class="hero__media" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+          <video id="heroVideo" muted loop playsinline preload="metadata" poster="assets/hero-frames/frame-001.jpg">
+            <source src="assets/videos/hero-loop.mp4" type="video/mp4">
+          </video>
+          <div class="hero__scrim"></div>
+        </div>
+
+        <div class="hero__loader" id="heroLoader" aria-hidden="true">
+          <span class="hero__loader-ring"></span>
+          <span class="hero__loader-label">Chargement</span>
+        </div>
+
+        <div class="container hero__inner">
+          <p class="hero__eyebrow">Étudiant BUT Informatique — Montpellier</p>
+          <h1 class="hero__title" id="heroTitle">
+            <span class="hero__line">Kilian Dach,</span>
+            <span class="hero__line">développeur web</span>
+            <span class="hero__line"><em>full-stack</em>.</span>
+          </h1>
+          <p class="hero__subtitle reveal">Je transforme des idées en applications web performantes. Du modèle de données à l'interface, je soigne autant la logique que le design.</p>
+          <div class="hero__actions reveal">
+            <a href="#projets" class="btn btn--primary">Voir mes projets</a>
+            <a href="assets/documents/Dach-Kilian-CV.pdf" class="btn btn--secondary" target="_blank" download data-cv-link>Télécharger mon CV</a>
+          </div>
+          <ul class="hero__trust reveal">
+            <li>BUT Informatique — parcours RACDV</li>
+            <li>Stage DSI — La Poste</li>
+            <li>Expérience freelance e-commerce</li>
+          </ul>
+        </div>
+
+        <div class="hero__progress" aria-hidden="true">
+          <span class="hero__progress-label">Scroll</span>
+          <span class="hero__progress-track"><span class="hero__progress-fill"></span></span>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true"><span></span></div>
+        <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
       </div>
-      <ul class="hero__trust reveal">
-        <li>BUT Informatique — parcours RACDV</li>
-        <li>Stage DSI — La Poste</li>
-        <li>Expérience freelance e-commerce</li>
-      </ul>
     </div>
-    <div class="hero__scroll" aria-hidden="true"><span></span></div>
-    <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
   </section>
 
   <!-- À PROPOS -->
@@ -517,9 +541,11 @@
   </svg>
 </button>
 
+<script>window.HERO_FRAME_COUNT = 97;</script>
 <script src="js/main.js" defer></script>
 <script src="js/scroll.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script src="js/cursor.js" defer></script>
+<script src="js/hero-cinema.js" defer></script>
 </body>
 </html>

@@ -290,20 +290,6 @@
   color: var(--color-gold-light);
 }
 
-.band .btn {
-  margin-top: 44px;
-}
-
-/* The band section stays black in both themes: keep the outline
-   button bright gold there, not the darker light-theme gold */
-.band .btn--secondary {
-  color: var(--color-gold);
-}
-
-.band .btn--secondary:hover {
-  color: var(--color-black);
-}
-
 .section-title--light,
 .band .section-title {
   text-align: center;

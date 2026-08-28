@@ -1,0 +1,325 @@
+/* =========================================================
+   HERO CINÉMA — vidéo orbitale scrubbée au scroll
+   Section volontairement sombre dans les deux thèmes (même
+   principe que .band) : la vidéo est le fond, le texte passe
+   en clair, l'or reste l'accent. Ne touche à rien d'autre.
+   ========================================================= */
+
+/* Le hero devient un rail de scroll : la hauteur totale définit
+   la durée du scrub, l'intérieur reste collé plein écran */
+.hero--cinema {
+  min-height: 0;
+  padding-top: 0;
+  display: block;
+  overflow: visible;
+  background: #050505;
+}
+
+.hero-scrub {
+  position: relative;
+  height: 280vh;
+}
+
+.hero-scrub__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Média (canvas scrubbé, vidéo en secours) --- */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background: #050505;
+}
+
+.hero__media canvas,
+.hero__media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Le JS choisit le mode : par défaut la vidéo est cachée,
+   le canvas prend le relais quand le scrub est actif */
+.hero__media video {
+  display: none;
+}
+
+.hero--cinema.is-video-mode .hero__media video {
+  display: block;
+}
+
+.hero--cinema.is-video-mode .hero__media canvas {
+  display: none;
+}
+
+/* Voile de lisibilité : dégradé latéral côté texte + assise en bas */
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.45) 38%, rgba(5, 5, 5, 0.05) 68%),
+    linear-gradient(0deg, rgba(5, 5, 5, 0.75) 0%, rgba(5, 5, 5, 0) 28%),
+    linear-gradient(180deg, rgba(5, 5, 5, 0.55) 0%, rgba(5, 5, 5, 0) 22%);
+  pointer-events: none;
+}
+
+/* --- Contenu : la copie existante, en clair sur le fond sombre --- */
+.hero--cinema .hero__inner {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 88px;
+  will-change: transform, opacity;
+}
+
+.hero--cinema .hero__title {
+  color: var(--color-white);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero--cinema .hero__title em {
+  color: var(--color-gold);
+}
+
+.hero--cinema .hero__eyebrow {
+  color: var(--color-gold-light);
+}
+
+.hero--cinema .hero__subtitle {
+  color: #c9c9c9;
+}
+
+.hero--cinema .hero__trust li {
+  color: #b9b9b9;
+}
+
+/* Boutons : style "fond sombre" forcé dans les deux thèmes,
+   comme la bande noire du site */
+.hero--cinema .btn--primary {
+  background: var(--color-gold);
+  color: var(--color-black);
+  border-color: var(--color-gold);
+}
+
+.hero--cinema .btn--primary:hover {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.hero--cinema .btn--secondary {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.hero--cinema .btn--secondary:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.hero--cinema :focus-visible {
+  outline-color: var(--color-gold-light);
+}
+
+/* --- Écran de chargement : les frames/la vidéo sont en HD, le temps
+   qu'elles arrivent on affiche un repère discret sur le fond noir déjà
+   en place (pas de flash blanc, pas de mise en page qui saute) --- */
+.hero__loader {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #050505;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.hero--cinema.is-ready .hero__loader {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero__loader-ring {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-top-color: var(--color-gold);
+  animation: heroLoaderSpin 0.9s linear infinite;
+}
+
+@keyframes heroLoaderSpin {
+  to { transform: rotate(360deg); }
+}
+
+.hero__loader-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__loader-ring {
+    animation: none;
+  }
+}
+
+/* Repères de progression du scrub (droite de l'écran) */
+.hero__progress {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.hero__progress-track {
+  width: 1px;
+  height: 120px;
+  background: rgba(201, 168, 76, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-gold);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.hero__progress-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  writing-mode: vertical-rl;
+}
+
+/* Le trait du bas et l'indicateur de scroll vivent dans le viewport sticky */
+.hero--cinema .hero__scroll {
+  z-index: 2;
+}
+
+.hero--cinema .gold-line-wrap {
+  z-index: 2;
+}
+
+/* --- Header au-dessus du hero : transparent, chrome clair.
+   La classe n'est posée par le JS que sur la page d'accueil,
+   les autres pages gardent le header habituel. --- */
+.header.is-over-hero {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.header.is-over-hero .logo {
+  color: var(--color-white);
+}
+
+.header.is-over-hero .nav__link {
+  color: var(--color-white);
+}
+
+.header.is-over-hero .theme-toggle {
+  color: var(--color-white);
+}
+
+.header.is-over-hero .hamburger span {
+  background: var(--color-white);
+}
+
+/* Menu mobile ouvert : le fond redevient celui du thème,
+   le hamburger doit rester visible dessus */
+.header.is-over-hero .hamburger.is-active span {
+  background: var(--hamburger-color);
+}
+
+.header.is-over-hero .btn--nav {
+  background: var(--color-gold);
+  color: var(--color-black);
+  border-color: var(--color-gold);
+}
+
+.header.is-over-hero .btn--nav:hover {
+  background: var(--color-white);
+  border-color: var(--color-white);
+}
+
+/* --- Mobile : pas de scrub, vidéo en boucle plein écran --- */
+@media (max-width: 860px) {
+  .hero--cinema {
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .hero-scrub {
+    height: auto;
+  }
+
+  .hero-scrub__sticky {
+    position: relative;
+    height: 100vh;
+    height: 100svh;
+    min-height: 560px;
+  }
+
+  .hero__progress {
+    display: none;
+  }
+
+  .hero--cinema .hero__inner {
+    padding-top: 110px;
+    padding-bottom: 72px;
+  }
+
+  .hero__scrim {
+    background:
+      linear-gradient(0deg, rgba(5, 5, 5, 0.85) 0%, rgba(5, 5, 5, 0.25) 45%, rgba(5, 5, 5, 0.05) 70%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0.6) 0%, rgba(5, 5, 5, 0) 26%);
+  }
+}
+
+/* --- Mouvement réduit : image fixe, aucun scrub --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scrub {
+    height: auto;
+  }
+
+  .hero-scrub__sticky {
+    position: relative;
+    height: 100vh;
+  }
+
+  .hero__progress {
+    display: none;
+  }
+}
