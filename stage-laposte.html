@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EatFit — Kilian Dach</title>
-<meta name="description" content="EatFit, application mobile React Native de suivi nutrition et entraînement : scan de codes-barres, base locale SQLite et synchronisation Supabase.">
+<title>LLM interne — La Poste — Kilian Dach</title>
+<meta name="description" content="Stage à la DSI de La Poste : déploiement d'un LLM interne (Gemma, vLLM), interface web Angular type Copilot, anonymisation, OIDC et custom node n8n.">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 
@@ -117,16 +117,16 @@
 
   <!-- EN-TÊTE PROJET -->
   <section class="page-header">
-    <span class="page-header__watermark" aria-hidden="true">E</span>
+    <span class="page-header__watermark" aria-hidden="true">L</span>
     <div class="container">
       <a href="index.html#projets" class="back-link">
         <span aria-hidden="true">←</span>
         <span>Retour aux projets</span>
       </a>
-      <p class="hero__eyebrow">Personnel · Application mobile</p>
-      <h1 class="page-header__title">EatFit</h1>
-      <p class="page-header__meta">Projet personnel · Nutrition &amp; entraînement · 2025</p>
-      <p class="page-header__desc">Application mobile de suivi nutrition et entraînement, réalisée en React Native avec Expo Go sur l'IDE Cursor. Elle permet de journaliser les repas, suivre les calories et l'hydratation, gérer des programmes et des séances, avec synchronisation cloud Supabase et base locale SQLite. L'API Open Food Facts gère le scan de codes-barres, et l'API Perplexity la reconnaissance d'aliments par photo.</p>
+      <p class="hero__eyebrow">Professionnel · IA générative</p>
+      <h1 class="page-header__title">Déployer un LLM interne<br>à la DSI de La Poste</h1>
+      <p class="page-header__meta">Stage de 3 mois · Branche Services-Courrier-Colis</p>
+      <p class="page-header__desc">Trois mois au sein de la DSI de La Poste (BSCC), pour explorer une question simple en apparence : comment une grande entreprise peut-elle utiliser l'IA générative sans envoyer ses données à des fournisseurs externes ?</p>
     </div>
     <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
   </section>
@@ -137,80 +137,73 @@
       <div class="doc">
 
         <div class="doc__section reveal">
-          <h2 class="doc__title">Contexte du projet</h2>
-          <p>EatFit est un projet personnel d'application mobile cross-platform (iOS / Android) visant à centraliser le suivi nutritionnel et sportif : repas, apports caloriques, eau, programmes d'entraînement et séances.</p>
-          <p>Le développement a été mené avec Expo et React Native pour un déploiement rapide sur Expo Go, en utilisant Cursor comme IDE avec assistance IA pour accélérer la conception des écrans et la logique métier.</p>
+          <h2 class="doc__title">Le problème</h2>
+          <p>Les outils d'IA grand public (ChatGPT, Copilot) posent un problème de souveraineté des données pour une entreprise comme La Poste, et leur coût à l'échelle devient vite significatif.</p>
+          <p>L'enjeu du stage était donc de construire une alternative interne, maîtrisée de bout en bout.</p>
         </div>
 
         <div class="doc__section reveal">
-          <h2 class="doc__title">Mes missions</h2>
+          <h2 class="doc__title">Ce que j'ai construit</h2>
+          <p>J'ai déployé un modèle <span class="tech-inline">Gemma</span> en interne via <span class="tech-inline">vLLM</span>, exposé sous forme d'API. Autour de ce modèle, j'ai développé une interface web type Copilot permettant aux équipes non techniques de l'utiliser au quotidien.</p>
+          <p>Pour étendre l'usage du modèle au-delà de l'interface web, j'ai également créé un custom node <span class="tech-inline">n8n</span> en TypeScript, permettant d'intégrer le LLM interne directement dans des workflows d'automatisation.</p>
+
           <div class="missions__grid">
             <div class="mission reveal">
-              <h3 class="mission__title">Nutrition</h3>
-              <p>Écrans repas (petit-déjeuner, déjeuner, dîner, collation), ajout d'aliments, scan de codes-barres via l'API Open Food Facts, reconnaissance d'aliments par photo avec l'API Perplexity, suivi des calories, des objectifs et de l'hydratation.</p>
+              <h3 class="mission__title">Modèle &amp; API</h3>
+              <p>Déploiement d'un modèle Gemma en interne via vLLM, exposé sous forme d'API consommable par les autres outils du système d'information.</p>
             </div>
             <div class="mission reveal">
-              <h3 class="mission__title">Entraînement</h3>
-              <p>Programmes et séances, gestion des exercices, suivi des performances (records personnels, volume), statistiques sous forme de graphiques et historique des entraînements en calendrier.</p>
+              <h3 class="mission__title">Interface type Copilot</h3>
+              <p>Interface web pensée pour les équipes non techniques, d'abord prototypée en Lit/JavaScript puis portée sous Angular en cours de projet.</p>
             </div>
             <div class="mission reveal">
-              <h3 class="mission__title">APIs &amp; données</h3>
-              <p>Base locale SQLite (expo-sqlite), synchronisation Supabase, mode hors-ligne et export des données, avec harmonisation des sources externes.</p>
+              <h3 class="mission__title">Anonymisation &amp; accès</h3>
+              <p>Fonction d'anonymisation des documents avant traitement, et authentification OIDC du groupe pour la gestion des accès.</p>
             </div>
             <div class="mission reveal">
-              <h3 class="mission__title">UX &amp; outils</h3>
-              <p>Interface moderne avec composants réutilisables et thème centralisé, TypeScript et Expo Router (routing basé sur les fichiers).</p>
+              <h3 class="mission__title">Custom node n8n</h3>
+              <p>Node n8n développé en TypeScript pour brancher le LLM interne directement dans les workflows d'automatisation existants.</p>
             </div>
           </div>
         </div>
 
         <div class="doc__section reveal">
-          <h2 class="doc__title">Technologies utilisées</h2>
+          <h2 class="doc__title">Stack et mise en production</h2>
+          <p>L'ensemble a été livré via des pipelines GitLab CI/CD, conteneurisé sous Docker et déployé sur OpenShift, avec la qualité de code suivie sous SonarQube.</p>
           <div class="tech__grid">
             <div class="tech__item">
-              <p class="tech__label">Mobile</p>
+              <p class="tech__label">Application</p>
               <div class="tags">
-                <span class="tag">React Native</span>
-                <span class="tag">Expo</span>
-                <span class="tag">Expo Go</span>
+                <span class="tag">Angular</span>
                 <span class="tag">TypeScript</span>
+                <span class="tag">Lit</span>
+                <span class="tag">Python</span>
               </div>
             </div>
             <div class="tech__item">
-              <p class="tech__label">Données &amp; APIs</p>
+              <p class="tech__label">IA &amp; automatisation</p>
               <div class="tags">
-                <span class="tag">Open Food Facts</span>
-                <span class="tag">Perplexity API</span>
-                <span class="tag">SQLite</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">AsyncStorage</span>
+                <span class="tag">Gemma</span>
+                <span class="tag">vLLM</span>
+                <span class="tag">n8n</span>
+                <span class="tag">OIDC</span>
               </div>
             </div>
             <div class="tech__item">
-              <p class="tech__label">Outils</p>
+              <p class="tech__label">Livraison</p>
               <div class="tags">
-                <span class="tag">Cursor AI</span>
-                <span class="tag">Expo Router</span>
-                <span class="tag">React Navigation</span>
+                <span class="tag">GitLab CI/CD</span>
+                <span class="tag">Docker</span>
+                <span class="tag">OpenShift</span>
+                <span class="tag">SonarQube</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="doc__section reveal">
-          <h2 class="doc__title">Démonstration</h2>
-          <div class="video video--portrait">
-            <video controls preload="metadata">
-              <source src="assets/videos/archive-EatFit.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la lecture de vidéos.
-            </video>
-          </div>
-        </div>
-
-        <div class="doc__section reveal">
-          <h2 class="doc__title">Résultats et apprentissages</h2>
-          <p>Ce projet m'a permis de monter en compétence sur React Native et Expo, de concevoir une application complète (nutrition et entraînement) avec une base locale et une synchronisation cloud, et d'utiliser l'IA intégrée à Cursor pour avancer plus vite sur l'interface et la logique métier.</p>
-          <p>J'ai intégré l'API Open Food Facts pour le scan de codes-barres et l'API Perplexity pour la reconnaissance des aliments par photo. EatFit reste en développement et n'est pas encore disponible sur les stores.</p>
+          <h2 class="doc__title">Résultat</h2>
+          <p>Les outils développés pendant ce stage sont aujourd'hui utilisés en interne par les équipes de la DSI — une brique pensée pour garder les données dans l'entreprise et réduire les coûts face aux solutions du marché.</p>
           <div class="about__actions">
             <a href="index.html#projets" class="text-link">
               <span>Voir les autres projets</span>

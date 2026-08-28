@@ -1,505 +1,525 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kilian / Développeur Web</title>
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kilian Dach — Développeur web full-stack</title>
+<meta name="description" content="Portfolio de Kilian Dach, étudiant en BUT Informatique à Montpellier. Développement web full-stack, projets freelance et académiques, photo et vidéo.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kilian Dach — Développeur web full-stack">
+<meta property="og:description" content="Étudiant en BUT Informatique à Montpellier. Je transforme des idées en applications web performantes.">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/typography.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/portfolio.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script>
+  (function () {
+    document.documentElement.classList.add('js');
+    var storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 </head>
 <body>
-    <div class="background-video">
-        <video src="assets/videos/purple-texture-background.mp4" autoplay muted loop playsinline></video>
+
+<a href="#accueil" class="skip-link">Aller au contenu</a>
+
+<!-- Curseur personnalisé -->
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#accueil" class="logo" aria-label="Kilian Dach — retour en haut">Kilian<span class="logo__accent">Dach</span></a>
+
+    <div class="header__right">
+      <nav class="nav" id="nav">
+        <a href="#apropos" class="nav__link">À propos</a>
+        <a href="#parcours" class="nav__link">Parcours</a>
+        <a href="#projets" class="nav__link">Projets</a>
+        <a href="#competences" class="nav__link">Compétences</a>
+        <a href="#contact" class="btn btn--primary btn--nav">Me contacter</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+        <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-    <div class="grain-overlay"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="page-loader" id="pageLoader">
-        <div class="page-loader-inner">
-            <div class="page-loader-logo">
-                <span class="nav-brand-bracket">[</span>
-                <span class="nav-brand-name"><img src="assets/images/logo.gif" alt="Kilian" class="page-loader-logo-gif"></span>
-                <span class="nav-brand-bracket">]</span>
-            </div>
-            <p class="page-loader-text">Chargement du portfolio...</p>
-            <div class="page-loader-bar">
-                <div class="page-loader-bar-fill"></div>
-            </div>
+  </div>
+</header>
+
+<!-- Menu mobile -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-menu__nav">
+    <a href="#accueil" class="mobile-menu__link">Accueil</a>
+    <a href="#apropos" class="mobile-menu__link">À propos</a>
+    <a href="#parcours" class="mobile-menu__link">Parcours</a>
+    <a href="#projets" class="mobile-menu__link">Projets</a>
+    <a href="#competences" class="mobile-menu__link">Compétences</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+
+    <button class="theme-toggle" id="themeToggleMobile" aria-label="Changer de thème">
+      <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </nav>
+  <div class="mobile-menu__footer">
+    <a href="mailto:kilian.dach@proton.me">kilian.dach@proton.me</a>
+    <a href="https://github.com/KilianDa" target="_blank" rel="noopener">github.com/KilianDa</a>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <span class="hero__watermark" aria-hidden="true">K</span>
+    <div class="container hero__inner">
+      <p class="hero__eyebrow">Étudiant BUT Informatique — Montpellier</p>
+      <h1 class="hero__title" id="heroTitle">
+        <span class="hero__line">Kilian Dach,</span>
+        <span class="hero__line">développeur web</span>
+        <span class="hero__line"><em>full-stack</em>.</span>
+      </h1>
+      <p class="hero__subtitle reveal">Je transforme des idées en applications web performantes. Du modèle de données à l'interface, je soigne autant la logique que le design.</p>
+      <div class="hero__actions reveal">
+        <a href="#projets" class="btn btn--primary">Voir mes projets</a>
+        <a href="assets/documents/Dach-Kilian-CV.pdf" class="btn btn--secondary" target="_blank" download data-cv-link>Télécharger mon CV</a>
+      </div>
+      <ul class="hero__trust reveal">
+        <li>BUT Informatique — parcours RACDV</li>
+        <li>Stage DSI — La Poste</li>
+        <li>Expérience freelance e-commerce</li>
+      </ul>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span></div>
+    <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="section" id="apropos">
+    <div class="container">
+      <p class="eyebrow reveal">À propos</p>
+      <h2 class="section-title reveal">Le code au service<br>des <span class="gold-italic">idées</span>.</h2>
+
+      <div class="about__grid">
+        <div class="about__media reveal">
+          <div class="about__frame">
+            <img src="assets/images/IMG_0685.jpg" alt="Portrait de Kilian Dach" class="about__img" loading="lazy">
+          </div>
         </div>
-    </div>
-    
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="#accueil" class="nav-brand" style="text-decoration: none; color: inherit;">
-                <span class="nav-brand-bracket">[</span>
-                <span class="nav-brand-name"><img src="assets/images/logo.gif" alt="Kilian" class="nav-logo-gif"></span>
-                <span class="nav-brand-bracket">]</span>
+
+        <div class="about__content reveal">
+          <div class="about__block">
+            <h3 class="about__title">Ma passion</h3>
+            <p>Ce qui me passionne dans le développement web, c'est de pouvoir répondre à de vrais besoins avec ma créativité. J'aime construire une interface que les utilisateurs apprécient, puis la connecter à une logique robuste et sécurisée.</p>
+          </div>
+
+          <div class="about__block">
+            <h3 class="about__title">Mon expérience</h3>
+            <p>J'ai rapidement voulu confronter ma formation à la réalité du terrain : d'abord en freelance sur un site e-commerce, puis en stage à la DSI de La Poste, où j'ai déployé un LLM interne et les outils qui vont avec. Gérer la relation client, respecter les délais et livrer un produit réellement utilisé a confirmé mon choix de carrière.</p>
+          </div>
+
+          <div class="about__block">
+            <h3 class="about__title">Ma double casquette</h3>
+            <p>À côté du code, je pratique la photo et la vidéo — y compris au drone. Ça nourrit directement mon travail de développeur : je conçois des interfaces avec un vrai regard de créatif, et je peux livrer un site accompagné de son contenu visuel.</p>
+          </div>
+
+          <div class="about__actions">
+            <a href="assets/documents/Dach-Kilian-CV.pdf" class="text-link text-link--down" target="_blank" download data-cv-link>
+              <span>Télécharger mon CV</span>
+              <span class="text-link__arrow" aria-hidden="true">↓</span>
             </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#accueil" class="nav-link" data-text="00">Accueil</a></li>
-                <li><a href="#apropos" class="nav-link" data-text="01">À propos</a></li>
-                <li><a href="#parcours" class="nav-link" data-text="02">Parcours</a></li>
-                <li><a href="#projets" class="nav-link" data-text="03">Projets</a></li>
-                <li><a href="#competences" class="nav-link" data-text="04">Compétences</a></li>
-                <li><a href="#loisirs" class="nav-link" data-text="05">Loisirs</a></li>
-                <li><a href="#contact" class="nav-link" data-text="06">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-            </button>
+            <a href="portfolio-apprentissage.html" class="text-link">
+              <span>Portfolio d'apprentissage</span>
+              <span class="text-link__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section class="process section" id="parcours">
+    <div class="container">
+      <p class="eyebrow reveal">Mon parcours</p>
+      <h2 class="section-title reveal">Formation &amp; expérience</h2>
+
+      <div class="process__list">
+        <div class="process__step reveal">
+          <span class="process__number" aria-hidden="true">01</span>
+          <div class="process__content">
+            <h3 class="process__title">Stage développeur — DSI de La Poste</h3>
+            <p class="process__meta">Stage de 3 mois · Branche Services-Courrier-Colis</p>
+            <p class="process__text">Déploiement d'un LLM interne (Gemma via vLLM) et des outils qui l'entourent : une interface web type Copilot en Angular, l'anonymisation des documents, l'authentification OIDC du groupe et un custom node n8n. Le tout livré en CI/CD GitLab sur OpenShift — et aujourd'hui utilisé par les équipes de la DSI.</p>
+            <a href="stage-laposte.html" class="text-link process__link">
+              <span>Voir le détail du stage</span>
+              <span class="text-link__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="process__step reveal">
+          <span class="process__number" aria-hidden="true">02</span>
+          <div class="process__content">
+            <h3 class="process__title">BUT Informatique — parcours RACDV</h3>
+            <p class="process__meta">2023 — 2025 · IUT de Montpellier</p>
+            <p class="process__text">Le parcours RACDV (Réalisation d'Applications : Conception, Développement, Validation) me forme à la totalité du cycle de vie logiciel. De la conception (UML, bases de données) au développement front-end et back-end, jusqu'à la validation (tests unitaires, tests d'intégration) : j'ai une vision complète et rigoureuse de la création d'applications.</p>
+            <a href="portfolio-apprentissage.html" class="text-link process__link">
+              <span>Voir mon portfolio d'apprentissage</span>
+              <span class="text-link__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="process__step reveal">
+          <span class="process__number" aria-hidden="true">03</span>
+          <div class="process__content">
+            <h3 class="process__title">Développeur web freelance</h3>
+            <p class="process__meta">2024 · Mission d'un mois</p>
+            <p class="process__text">Conception et développement complet de la boutique en ligne V2C, de l'analyse des besoins jusqu'à la mise en production avec paiement Stripe. Un premier vrai contact avec la relation client, les délais et la responsabilité d'une livraison.</p>
+            <a href="v2c-shop.html" class="text-link process__link">
+              <span>Voir le projet V2C Shop</span>
+              <span class="text-link__arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="process__step reveal">
+          <span class="process__number" aria-hidden="true">04</span>
+          <div class="process__content">
+            <h3 class="process__title">Baccalauréat STI2D — spécialité SIN</h3>
+            <p class="process__meta">2021 — 2023 · Mention Bien</p>
+            <p class="process__text">Systèmes d'Information et Numérique : première approche de la programmation, de l'électronique embarquée et de la conduite de projets techniques.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- PROJETS -->
+  <section class="section" id="projets">
+    <div class="container">
+      <p class="eyebrow reveal">Mes réalisations</p>
+      <h2 class="section-title reveal">Quatre projets,<br>quatre <span class="gold-italic">contextes</span>.</h2>
+
+      <div class="projects__grid">
+        <a href="stage-laposte.html" class="card card--featured reveal">
+          <span class="badge">Stage en entreprise</span>
+          <div class="card__header">
+            <p class="card__eyebrow">Professionnel · IA générative</p>
+            <div class="card__meta">
+              <h3 class="card__title">LLM interne — La Poste</h3>
+              <span class="card__year">Stage</span>
+            </div>
+          </div>
+          <p class="card__desc">Déploiement d'un LLM interne à la DSI de La Poste : modèle Gemma servi par vLLM, interface web type Copilot en Angular, anonymisation des documents, authentification OIDC et custom node n8n. Outils aujourd'hui utilisés en interne.</p>
+          <div class="tags">
+            <span class="tag">Angular</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">vLLM</span>
+            <span class="tag">OpenShift</span>
+          </div>
+          <div class="card__footer">
+            <span class="card__cta"><span>Voir le projet</span><span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="v2c-shop.html" class="card reveal">
+          <div class="card__header">
+            <p class="card__eyebrow">Freelance · E-commerce</p>
+            <div class="card__meta">
+              <h3 class="card__title">V2C Shop</h3>
+              <span class="card__year">2024</span>
+            </div>
+          </div>
+          <p class="card__desc">Site e-commerce complet pour une marque indépendante de t-shirts : boutique moderne, facile à administrer et optimisée pour la conversion, avec paiement sécurisé Stripe.</p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Stripe</span>
+          </div>
+          <div class="card__footer">
+            <span class="card__cta"><span>Voir le projet</span><span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="bottomup.html" class="card reveal">
+          <div class="card__header">
+            <p class="card__eyebrow">Académique · Vote participatif</p>
+            <div class="card__meta">
+              <h3 class="card__title">BottomUp</h3>
+              <span class="card__year">2025</span>
+            </div>
+          </div>
+          <p class="card__desc">Application web de vote participatif développée en équipe de 4 avec la méthode agile Scrum. Architecture MVC, base de données SQL et tests unitaires.</p>
+          <div class="tags">
+            <span class="tag">PHP</span>
+            <span class="tag">SQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Docker</span>
+            <span class="tag">GitLab</span>
+          </div>
+          <div class="card__footer">
+            <span class="card__cta"><span>Voir le projet</span><span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+
+        <a href="eatfit.html" class="card reveal">
+          <div class="card__header">
+            <p class="card__eyebrow">Personnel · Application mobile</p>
+            <div class="card__meta">
+              <h3 class="card__title">EatFit</h3>
+              <span class="card__year">2025</span>
+            </div>
+          </div>
+          <p class="card__desc">Application mobile de suivi nutrition et entraînement : journal de repas, scan de codes-barres, programmes sportifs, base locale SQLite et synchronisation Supabase.</p>
+          <div class="tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Expo</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">SQLite</span>
+          </div>
+          <div class="card__footer">
+            <span class="card__cta"><span>Voir le projet</span><span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="skills section" id="competences">
+    <div class="container">
+      <p class="eyebrow reveal">Ma boîte à outils</p>
+      <h2 class="section-title reveal">Les technologies que j'utilise</h2>
+
+      <div class="skills__grid">
+        <div class="skill reveal">
+          <span class="skill__number">01</span>
+          <p class="skill__label">Front-End</p>
+          <div class="skill__tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Angular</span>
+          </div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__number">02</span>
+          <p class="skill__label">Back-End</p>
+          <div class="skill__tags">
+            <span class="tag">PHP</span>
+            <span class="tag">Java</span>
+            <span class="tag">C</span>
+            <span class="tag">Python</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__number">03</span>
+          <p class="skill__label">Données</p>
+          <div class="skill__tags">
+            <span class="tag">SQL</span>
+            <span class="tag">phpMyAdmin</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">SQLite</span>
+          </div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__number">04</span>
+          <p class="skill__label">Mobile</p>
+          <div class="skill__tags">
+            <span class="tag">React Native</span>
+            <span class="tag">Expo</span>
+            <span class="tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__number">05</span>
+          <p class="skill__label">Versionning &amp; CI/CD</p>
+          <div class="skill__tags">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">GitLab CI/CD</span>
+            <span class="tag">SonarQube</span>
+            <span class="tag">Scrum</span>
+            <span class="tag">UML</span>
+          </div>
+        </div>
+        <div class="skill reveal">
+          <span class="skill__number">06</span>
+          <p class="skill__label">Outils &amp; déploiement</p>
+          <div class="skill__tags">
+            <span class="tag">Docker</span>
+            <span class="tag">OpenShift</span>
+            <span class="tag">vLLM</span>
+            <span class="tag">n8n</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Cursor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line-wrap"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- LOISIRS -->
+  <section class="why section" id="loisirs">
+    <div class="container">
+      <p class="eyebrow reveal">Au-delà du code</p>
+      <h2 class="section-title reveal">La création <span class="gold-italic">visuelle</span></h2>
+
+      <div class="why__grid">
+        <div class="why__item reveal">
+          <h3 class="why__title">Photographie</h3>
+          <p class="why__text">Automobile, portrait, événementiel, produit et architecture. J'aime capturer des moments et travailler la lumière autant que la composition.</p>
+        </div>
+        <div class="why__item reveal">
+          <h3 class="why__title">Vidéo</h3>
+          <p class="why__text">Tournage, montage et colorimétrie, avec un goût prononcé pour les formats courts pensés pour les réseaux sociaux.</p>
+        </div>
+        <div class="why__item reveal">
+          <h3 class="why__title">Drone &amp; FPV</h3>
+          <p class="why__text">Drone classique et FPV pour les prises de vue aériennes, et des perspectives qu'on ne peut obtenir autrement.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line-wrap gold-line-wrap--full"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- BANDE — PROFIL HYBRIDE -->
+  <section class="band section">
+    <div class="container">
+      <div class="band__seal reveal" aria-hidden="true">
+        <span class="band__seal-number">2</span>
+        <span class="band__seal-label">casquettes<br>réunies</span>
+      </div>
+      <p class="eyebrow eyebrow--light reveal">L'avantage</p>
+      <h2 class="section-title section-title--light reveal">Développeur <span class="gold-italic">et</span> créatif visuel.</h2>
+      <p class="band__text reveal">Je porte une attention particulière au design des sites que je crée, et je peux proposer le développement web couplé à de la production photo et vidéo. De quoi construire une présence en ligne complète : un site sur mesure et le contenu visuel qui va avec.</p>
+      <p class="band__note reveal">Un seul interlocuteur, du code au contenu.</p>
+    </div>
+    <div class="gold-line-wrap gold-line-wrap--full"><div class="gold-line" data-animate-line></div></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="cta section" id="contact">
+    <div class="container">
+      <p class="eyebrow reveal">Contact</p>
+      <h2 class="cta__title reveal">Un projet ? <span class="gold-italic">Parlons-en.</span></h2>
+      <p class="cta__subtitle reveal">Je suis toujours ouvert pour discuter d'un nouveau projet, d'une opportunité d'alternance ou simplement échanger sur le développement web.</p>
+      <a href="mailto:kilian.dach@proton.me?subject=Prise%20de%20contact%20via%20le%20portfolio" class="btn btn--primary btn--large reveal">M'envoyer un message</a>
+
+      <div class="contact__links reveal">
+        <a href="mailto:kilian.dach@proton.me" class="contact__link">Email</a>
+        <a href="https://github.com/KilianDa" class="contact__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/kilian-dach-70b7732aa" class="contact__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="assets/documents/Dach-Kilian-CV.pdf" class="contact__link" target="_blank" download data-cv-link>Mon CV</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <p class="logo logo--footer">Kilian<span class="logo__accent">Dach</span></p>
+      <p class="footer__tagline">Développeur web full-stack — Montpellier</p>
+    </div>
+
+    <nav class="footer__nav">
+      <a href="#apropos">À propos</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="portfolio-apprentissage.html">Portfolio d'apprentissage</a>
     </nav>
-    
-    <!-- Section Accueil -->
-    <section id="accueil" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-label">
-                    <span class="label-line"></span>
-                    <span class="label-text">PORTFOLIO</span>
-                </div>
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        <span class="hero-title-line" data-delay="0">KILIAN</span>
-                        <span class="hero-title-line hero-title-outline" data-delay="100">DACH</span>
-                    </h1>
-                    <div class="hero-subtitle-wrapper">
-                        <p class="hero-subtitle" data-delay="200">
-                            Étudiant BUT Informatique
-                        </p>
-                    </div>
-                </div>
-                <div class="hero-image-wrapper">
-                    <span class="hero-image-tagline" data-delay="350">"think outside the box"</span>
-                    <img src="assets/images/hero-image.png" alt="Kilian" class="hero-profile-img" data-delay="300">
-                </div>
-                <div class="hero-description" data-delay="350">
-                    <p>
-                        Je transforme des idées en applications web créatives et performantes.
-                        Passionné par le développement full-stack et la création d'expériences utilisateur mémorables.
-                    </p>
-                </div>
-                <div class="hero-cta" data-delay="400">
-                    <a href="#projets" class="btn btn-primary">
-                        <span class="btn-text">PROJETS</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span class="btn-text">CONTACT</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section À propos -->
-    <section id="apropos" class="section section-about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">À propos</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-image-col">
-                    <div class="about-image-frame">
-                        <img src="assets/images/IMG_0685.jpg" alt="Kilian" class="about-img">
-                        <div class="image-corner image-corner-tl"></div>
-                        <div class="image-corner image-corner-br"></div>
-                    </div>
-                </div>
-                <div class="about-content-col">
-                    <div class="about-block">
-                        <h3 class="about-heading">
-                            <span class="heading-marker">//</span> Ma passion
-                        </h3>
-                        <p class="about-text">
-                            Ce qui me passionne dans le développement web, c'est que je peux répondre à de vrais besoins avec ma créativité. J'aime l'idée de construire une interface que les utilisateurs
-                            apprécient et de la connecter à une logique robuste et sécurisée.
-                        </p>
-                    </div>
-                    <div class="about-block">
-                        <h3 class="about-heading">
-                            <span class="heading-marker">//</span> Mon expérience
-                        </h3>
-                        <p class="about-text">
-                            J'ai rapidement voulu confronter ma formation à la réalité du terrain. C'est pourquoi j'ai saisi
-                            l'opportunité de travailler en freelance sur un projet de site e-commerce. Gérer la relation client,
-                            respecter les délais et livrer un produit fonctionnel a été une expérience incroyablement formatrice
-                            qui a confirmé mon choix de carrière.
-                        </p>
-                    </div>
-                    <div class="about-cta">
-                        <a href="assets/documents/Dach-Kilian-CV.pdf" class="link-underline" target="_blank" download>
-                            <span>Télécharger mon CV</span>
-                            <span class="link-arrow">↓</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Parcours -->
-    <section id="parcours" class="section section-timeline">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">Parcours</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2023—2025</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">BUT Informatique</h3>
-                        <p class="timeline-subtitle">Parcours RACDV / IUT Montpellier</p>
-                        <p class="timeline-description">
-                            Actuellement étudiant en BUT Informatique, mon parcours RACDV (Réalisation d'Applications :
-                            Conception, Développement, Validation) me forme à la totalité du cycle de vie logiciel.
-                            De la conception (UML, bases de données) au développement (Front-end et Back-end) jusqu'à
-                            la validation (tests unitaires, tests d'intégration), j'ai donc une vision complète et
-                            rigoureuse de la création d'applications.
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">2021—2023</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Baccalauréat STI2D (SIN)</h3>
-                        <p class="timeline-subtitle">Mention Bien</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Projets -->
-    <section id="projets" class="section section-projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">Projets</h2>
-            </div>
-            <div class="projects-grid">
-                <!-- Projet V2C Shop -->
-                <a href="v2c-shop.html" class="project-card project-featured">
-                    <div class="project-badge">
-                        <span class="badge-bracket">[</span>
-                        <span class="badge-text">PROJET EN VEDETTE</span>
-                        <span class="badge-bracket">]</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">V2C Shop</h3>
-                            <span class="project-year">2024</span>
-                        </div>
-                        <p class="project-context">FREELANCE / E-COMMERCE</p>
-                        <p class="project-description">
-                            Réalisation d'un site e-commerce complet pour V2C, une petite marque indépendante de vente
-                            de t-shirts. Boutique moderne, esthétique et optimisée pour la conversion.
-                        </p>
-                        <div class="project-card-extra">
-                            <p class="project-description">
-                                Projet d'environ 1 mois, véritable challenge car première boutique de cette envergure.
-                                J'ai beaucoup appris en développement, relation client et gestion de projet.
-                            </p>
-                            <div class="project-missions">
-                                <h4>Mes missions :</h4>
-                                <ul>
-                                    <li>Analyse des besoins du client</li>
-                                    <li>Conception de la maquette et de l'expérience utilisateur</li>
-                                    <li>Développement Front-end et Back-end de la boutique</li>
-                                    <li>Intégration d'un système de paiement sécurisé avec Stripe</li>
-                                </ul>
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Stripe</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Projet BottomUp -->
-                <a href="bottomup.html" class="project-card">
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">BottomUp</h3>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <p class="project-context">ACADÉMIQUE / VOTE PARTICIPATIF</p>
-                        <p class="project-description">
-                            Dans le cadre de mon parcours RACDV, nous avons développé un site web de vote participatif.
-                            Site en PHP, HTML, CSS et JavaScript développé en équipe de 4 avec méthode agile.
-                        </p>
-                        <div class="project-card-extra">
-                            <p class="project-description">
-                                Projet très formateur sur le travail en équipe, l'utilisation d'outils (Trello, Git)
-                                et la gestion d'un client (priorités, délais, contraintes).
-                            </p>
-                            <div class="project-missions">
-                                <h4>Mes missions :</h4>
-                                <ul>
-                                    <li>Mise en place d'une architecture MVC</li>
-                                    <li>Généralisation du code pour éviter la duplication</li>
-                                    <li>Conception de la base de données</li>
-                                    <li>Réalisation des tests unitaires</li>
-                                </ul>
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">PHP</span>
-                                <span class="tech-tag">HTML</span>
-                                <span class="tech-tag">CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">SQL</span>
-                                <span class="tech-tag">Docker</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Projet EatFit -->
-                <a href="eatfit.html" class="project-card">
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">EatFit</h3>
-                            <span class="project-year">2025</span>
-                        </div>
-                        <p class="project-context">PERSONNEL / APPLICATION MOBILE</p>
-                        <p class="project-description">
-                            Application mobile pour suivre ses données en nutrition et entraînement, réalisée en
-                            React Native avec Expo Go sur l'IDE Cursor (IA intégrée).
-                        </p>
-                        <div class="project-card-extra">
-                            <p class="project-description">
-                                Suivi des repas, calories, hydratation, programmes et séances d'entraînement,
-                                avec base locale SQLite et synchronisation Supabase.
-                            </p>
-                            <div class="project-missions">
-                                <h4>Mes missions :</h4>
-                                <ul>
-                                    <li>Conception des écrans nutrition (repas, calories, eau)</li>
-                                    <li>Gestion des programmes et séances d'entraînement</li>
-                                    <li>Base locale SQLite et synchronisation Supabase</li>
-                                    <li>Développement avec Cursor AI (React Native, TypeScript)</li>
-                                </ul>
-                            </div>
-                            <div class="project-tech">
-                                <span class="tech-tag">React Native</span>
-                                <span class="tech-tag">Expo</span>
-                                <span class="tech-tag">TypeScript</span>
-                                <span class="tech-tag">Supabase</span>
-                                <span class="tech-tag">SQLite</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Compétences -->
-    <section id="competences" class="section section-skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">Compétences</h2>
-            </div>
-            <p class="section-intro">
-                Technologies et outils que j'utilise au quotidien, que ce soit en projet universitaire,
-                personnel ou professionnel.
-            </p>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Langages & Frameworks</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <h4>Front-End</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">HTML</span>
-                                <span class="skill-tag">CSS</span>
-                                <span class="skill-tag">JavaScript</span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Back-End</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">PHP</span>
-                                <span class="skill-tag">Java</span>
-                                <span class="skill-tag">C</span>
-                                <span class="skill-tag">Python</span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Bases de données</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">SQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3 class="skill-category-title">Outils & Méthodes</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <h4>Versionning</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">GitHub</span>
-                                <span class="skill-tag">GitLab</span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Méthodologie</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Méthodes Agiles (Scrum)</span>
-                                <span class="skill-tag">Conception (UML)</span>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <h4>Outils</h4>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Docker</span>
-                                <span class="skill-tag">Figma</span>
-                                <span class="skill-tag">PhpStorm</span>
-                                <span class="skill-tag">Trello</span>
-                                <span class="skill-tag">Cursor (IDE AI)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Loisirs -->
-    <section id="loisirs" class="section section-hobbies">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">05</span>
-                <h2 class="section-title">Loisirs</h2>
-            </div>
-            <p class="section-intro">
-                Au-delà du développement web, je suis passionné par la création visuelle et audiovisuelle
-            </p>
-            <div class="hobbies-content">
-                <div class="hobbies-main">
-                    <div class="hobby-card featured-hobby">
-                        <div class="hobby-icon">🎥</div>
-                        <h3>Vidéo & Photographie</h3>
-                        <p>
-                            La vidéo et la photographie sont des passions qui me permettent d'exprimer ma créativité
-                            et de capturer des moments uniques. Que ce soit dans l'automobile, pour des projets créatifs,
-                            des portraits ou des événements, j'aime créer du contenu visuel de qualité professionnelle.
-                        </p>
-                        <p>
-                            J'utilise également des drones (drone classique et drone FPV) pour réaliser des prises de vues
-                            aériennes
-                            et offrir des perspectives uniques à mes projets vidéo et photos.
-                        </p>
-                        <p class="hobby-highlight">
-                            <strong>Avantage réel :</strong> Je porte une attention particulière au design des sites que je crée et je peux proposer des services de développement web couplés avec
-                            de la production vidéo et photographique professionnelle. Idéal pour créer une présence
-                            en ligne complète avec un site web sur mesure et du contenu visuel de qualité.
-                        </p>
-                    </div>
-                </div>
-                <div class="hobbies-grid">
-                    <div class="hobby-item">
-                        <div class="hobby-item-icon">📸</div>
-                        <h4>Photographie</h4>
-                        <p>Automobile, Portraits, événements, produits, architecture</p>
-                    </div>
-                    <div class="hobby-item">
-                        <div class="hobby-item-icon">🎬</div>
-                        <h4>Vidéo</h4>
-                        <p>Montage, colorimétrie, contenu pour les réseaux sociaux, prises de vues aériennes</p>
-                    </div>
-                    <div class="hobby-item">
-                        <div class="hobby-item-icon">🚁</div>
-                        <h4>Drones</h4>
-                        <p>Drone classique et FPV pour vidéos aériennes</p>
-                    </div>
-                </div>
-            </div>
-            <div class="hobbies-cta">
-                <p class="section-subtitle">
-                    Si cette facette (vidéo/photo) vous intéresse d'avantage, je vous redirige vers mon
-                    autre portfolio. Plus orienté sur cette facette de ma vie.
-                </p>
-                <a href="https://kilianda.github.io/portfolio-pro" class="btn btn-outline secondary-portfolio-btn" target="_blank">
-                    Consulter mon autre portfolio
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Section Contact -->
-    <section id="contact" class="section section-contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">06</span>
-                <h2 class="section-title">Contact</h2>
-            </div>
-            <p class="section-intro">
-                Vous avez un projet en tête ? N'hésitez pas à me contacter.
-            </p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>
-                        Je suis toujours ouvert à discuter de nouveaux projets, opportunités de collaboration
-                        ou simplement échanger sur le développement web.
-                    </p>
-                    <div class="contact-links">
-                        <a href="mailto:kilian.dach@proton.me" class="contact-link">
-                            <span class="contact-icon">✉</span>
-                            <span>Email</span>
-                        </a>
-                        <a href="https://github.com/KilianDa" class="contact-link" target="_blank">
-                            <span class="contact-icon">🔗</span>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/kilian-dach-70b7732aa" class="contact-link" target="_blank">
-                            <span class="contact-icon">💼</span>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="assets/documents/Dach-Kilian-CV.pdf" class="contact-link" target="_blank" download>
-                            <span class="contact-icon">📄</span>
-                            <span>Télécharger mon CV</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p class="footer-text">
-                        <span class="terminal-prompt">$</span> © 2026 Kilian Dach
-                    </p>
-                </div>
-                <div class="footer-right">
-                    <a href="#accueil" class="footer-link">
-                        <span>Retour en haut</span>
-                        <span class="link-arrow">↑</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="script.js"></script>
+
+    <div class="footer__social">
+      <a href="https://github.com/KilianDa" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/kilian-dach-70b7732aa" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:kilian.dach@proton.me">Email</a>
+    </div>
+  </div>
+  <div class="container">
+    <p class="footer__copyright">© <span id="copyrightYear">2026</span> Kilian Dach — Tous droits réservés</p>
+  </div>
+</footer>
+
+<!-- Retour en haut -->
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut de page">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<script src="js/main.js" defer></script>
+<script src="js/scroll.js" defer></script>
+<script src="js/menu.js" defer></script>
+<script src="js/cursor.js" defer></script>
 </body>
 </html>
-

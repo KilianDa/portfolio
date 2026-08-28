@@ -1,0 +1,392 @@
+/* Keyboard focus — visible outline for keyboard users only */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.band :focus-visible,
+.footer :focus-visible {
+  outline-color: var(--color-gold-light);
+}
+
+/* Skip link — first tab stop, hidden until focused */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 300;
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 14px 28px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform var(--transition-base);
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 36px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-color: var(--btn-primary-border);
+}
+
+.btn--primary:hover {
+  background: var(--btn-primary-hover-bg);
+  border-color: var(--btn-primary-hover-border);
+  color: var(--btn-primary-hover-text);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-gold-text);
+  border-color: var(--color-gold);
+}
+
+.btn--secondary:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--large {
+  padding: 22px 52px;
+  font-size: 0.9rem;
+}
+
+.btn--nav {
+  padding: 12px 24px;
+  font-size: 0.72rem;
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--color-gold);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px var(--card-shadow);
+}
+
+.card--featured {
+  border-width: 2px;
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  right: 32px;
+  background: var(--color-gold);
+  color: var(--color-black);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+}
+
+.card__header {
+  margin-bottom: 24px;
+}
+
+.card__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  margin-bottom: 10px;
+}
+
+.card__title {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  line-height: 1.1;
+  transition: color var(--transition-base);
+}
+
+.card__subtitle {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--text-muted);
+  transition: color var(--transition-base);
+}
+
+.card__desc {
+  margin-bottom: 24px;
+}
+
+.card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.card__list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--font-sans);
+  color: var(--text-color);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  transition: color var(--transition-base);
+}
+
+.card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.card__footer {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.card__price {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  transition: color var(--transition-base);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  z-index: 200;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--hamburger-color);
+  transition: transform var(--transition-base), opacity var(--transition-base), background-color var(--transition-base);
+}
+
+.hamburger.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--mobile-menu-bg);
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-16px);
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility 0s var(--transition-base), background-color var(--transition-base);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility 0s;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.mobile-menu__link {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--text-color);
+  transition: color var(--transition-base);
+}
+
+.mobile-menu__link:hover {
+  color: var(--color-gold);
+}
+
+.mobile-menu__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  transition: color var(--transition-base);
+}
+
+/* Custom cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gold);
+  background: rgba(201, 168, 76, 0.15);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity var(--transition-base), width var(--transition-fast), height var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cursor-dot.is-visible {
+  opacity: 1;
+}
+
+.cursor-dot.is-active {
+  width: 44px;
+  height: 44px;
+  background: rgba(201, 168, 76, 0.25);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color var(--transition-base), color var(--transition-base);
+  z-index: 101;
+}
+
+.theme-toggle:hover {
+  color: var(--color-gold);
+  background-color: rgba(201, 168, 76, 0.1);
+}
+
+.theme-toggle svg {
+  position: absolute;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+/* Light mode state: Moon icon is visible, Sun icon is rotated & hidden */
+.theme-toggle .sun-icon {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+.theme-toggle .moon-icon {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+/* Dark mode state: Sun icon is visible, Moon icon is rotated & hidden */
+[data-theme="dark"] .theme-toggle .sun-icon {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+[data-theme="dark"] .theme-toggle .moon-icon {
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+
+/* Mobile-specific theme toggler inside the mobile menu layout */
+.mobile-menu .theme-toggle {
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--text-color);
+  color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility 0s var(--transition-base), background-color var(--transition-base), color var(--transition-base);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity var(--transition-base), transform var(--transition-base), visibility 0s, background-color var(--transition-base), color var(--transition-base);
+}
+
+.back-to-top:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+}

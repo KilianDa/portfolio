@@ -1,0 +1,593 @@
+/* =========================================================
+   PORTFOLIO — sections spécifiques
+   Reprend la grammaire visuelle de kilianvisuals (or, serif,
+   filets fins) appliquée aux contenus du portfolio dev.
+   ========================================================= */
+
+/* ---------- À propos ---------- */
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 72px;
+  margin-top: 60px;
+  align-items: start;
+}
+
+.about__frame {
+  position: relative;
+}
+
+.about__frame::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: -20px;
+  bottom: -20px;
+  border: 1px solid var(--color-gold);
+}
+
+.about__img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.about__block + .about__block {
+  margin-top: 40px;
+}
+
+.about__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  position: relative;
+  padding-top: 24px;
+  margin-bottom: 14px;
+  transition: color var(--transition-base);
+}
+
+.about__title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.about__actions {
+  margin-top: 44px;
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ---------- Lien texte souligné or ---------- */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  padding-bottom: 6px;
+  position: relative;
+  transition: color var(--transition-base);
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.text-link__arrow {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.text-link:hover .text-link__arrow {
+  transform: translateX(5px);
+}
+
+.text-link--down:hover .text-link__arrow {
+  transform: translateY(4px);
+}
+
+/* ---------- Parcours (réutilise .process) ---------- */
+.process__link {
+  margin-top: 22px;
+}
+
+.process__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+/* ---------- Projets ---------- */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  margin-top: 60px;
+}
+
+.card__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card__year {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-gold-text);
+  flex-shrink: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.tag {
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color-light);
+  padding: 6px 10px;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+}
+
+.card__cta span:last-child {
+  transition: transform var(--transition-fast);
+}
+
+.card:hover .card__cta span:last-child {
+  transform: translateX(6px);
+}
+
+/* ---------- Compétences ---------- */
+.skill__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* ---------- Bande sombre (profil hybride) ---------- */
+.band__seal-number {
+  font-size: 2.4rem;
+}
+
+.band__links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+/* ---------- Contact ---------- */
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 44px;
+}
+
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-color);
+  padding: 15px 24px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  transition: color var(--transition-base), border-color var(--transition-base), background-color var(--transition-base);
+}
+
+.contact__link:hover {
+  color: var(--color-gold-text);
+  border-color: var(--color-gold);
+  background: rgba(201, 168, 76, 0.07);
+}
+
+/* =========================================================
+   PAGES INTÉRIEURES (projets / portfolio d'apprentissage)
+   ========================================================= */
+
+.page-header {
+  padding-top: 168px;
+  padding-bottom: 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header__watermark {
+  position: absolute;
+  right: -3%;
+  top: 50%;
+  transform: translateY(calc(-50% + var(--parallax, 0px)));
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(14rem, 28vw, 28rem);
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 44px;
+  transition: color var(--transition-base);
+}
+
+.back-link span:first-child {
+  transition: transform var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--color-gold-text);
+}
+
+.back-link:hover span:first-child {
+  transform: translateX(-5px);
+}
+
+.page-header__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 1;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 18px;
+  transition: color var(--transition-base);
+}
+
+.page-header__meta {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  margin-bottom: 28px;
+}
+
+.page-header__desc {
+  max-width: 70ch;
+  font-size: 1.05rem;
+}
+
+/* ---------- Corps documentaire ---------- */
+.doc__section {
+  padding: 64px 0;
+  border-top: 1px solid var(--border-color-light);
+}
+
+.doc__section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.doc__section:last-child {
+  padding-bottom: 0;
+}
+
+.doc__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 26px;
+  position: relative;
+  padding-top: 24px;
+  transition: color var(--transition-base);
+}
+
+.doc__title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.doc__section p {
+  max-width: 76ch;
+}
+
+.doc__section p + p {
+  margin-top: 18px;
+}
+
+.doc__section strong {
+  color: var(--text-color);
+  font-weight: 600;
+  transition: color var(--transition-base);
+}
+
+/* ---------- Missions ---------- */
+.missions__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border-color);
+  border: 1px solid var(--border-color);
+}
+
+.mission {
+  background: var(--card-bg);
+  padding: 36px 32px;
+  transition: background-color var(--transition-base), background-image var(--transition-fast);
+}
+
+.mission:hover {
+  background-image: linear-gradient(rgba(201, 168, 76, 0.06), rgba(201, 168, 76, 0.06));
+}
+
+.mission__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  transition: color var(--transition-base);
+}
+
+.mission p + p {
+  margin-top: 12px;
+}
+
+/* ---------- Technologies ---------- */
+.tech__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 36px;
+}
+
+.tech__label {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  margin-bottom: 16px;
+}
+
+/* ---------- Vidéo ---------- */
+.video {
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  padding: 12px;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.video video {
+  width: 100%;
+  display: block;
+}
+
+.video--portrait {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ---------- Portfolio d'apprentissage ---------- */
+.learning__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.learning-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 36px 32px;
+  transition: background-color var(--transition-base), border-color var(--transition-base), transform var(--transition-fast);
+}
+
+.learning-card:hover {
+  border-color: var(--color-gold);
+}
+
+.learning-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color-light);
+  transition: color var(--transition-base);
+}
+
+.learning-card p + p {
+  margin-top: 14px;
+}
+
+.learning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 22px;
+}
+
+.learning-list li {
+  position: relative;
+  padding-left: 22px;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  line-height: 1.6;
+  transition: color var(--transition-base);
+}
+
+.learning-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+.learning-list li strong {
+  color: var(--text-color);
+  transition: color var(--transition-base);
+}
+
+/* Mention technique inline dans un paragraphe */
+.tech-inline {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-gold-text);
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+  transition: color var(--transition-base);
+}
+
+/* =========================================================
+   RESPONSIVE — sections portfolio
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about__grid {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 860px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .about__frame {
+    max-width: 340px;
+  }
+
+  .about__frame::before {
+    top: 14px;
+    left: 14px;
+    right: -14px;
+    bottom: -14px;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .missions__grid,
+  .learning__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    padding-top: 132px;
+    padding-bottom: 56px;
+  }
+
+  .page-header__watermark {
+    display: none;
+  }
+
+  .back-link {
+    margin-bottom: 32px;
+  }
+
+  .doc__section {
+    padding: 48px 0;
+  }
+
+  .mission,
+  .learning-card {
+    padding: 28px 24px;
+  }
+
+  .contact__links {
+    justify-content: flex-start;
+  }
+
+  .band__links {
+    justify-content: flex-start;
+  }
+}
+
+/* Les tags de la grille technologies suivent directement leur label */
+.tech__item .tags {
+  padding-top: 0;
+}
+
+/* Le lien de retour occupe sa propre ligne au-dessus du chapeau */
+.back-link {
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+}

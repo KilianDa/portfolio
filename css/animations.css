@@ -1,0 +1,237 @@
+/* Reveal on scroll — keyframe-based so it never hijacks hover transitions.
+   Every rule that hides content until JS runs is gated behind .js (set by
+   the inline head script) so the page stays readable if JS never executes. */
+.js .reveal {
+  opacity: 0;
+}
+
+.js .reveal.is-visible {
+  animation: revealUp 0.7s ease both;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Staggered entrances for grouped elements */
+.services__grid .reveal:nth-child(2) { animation-delay: 0.15s; }
+
+.why__grid .reveal:nth-child(2) { animation-delay: 0.12s; }
+.why__grid .reveal:nth-child(3) { animation-delay: 0.24s; }
+
+.skills__grid .reveal:nth-child(2) { animation-delay: 0.08s; }
+.skills__grid .reveal:nth-child(3) { animation-delay: 0.16s; }
+.skills__grid .reveal:nth-child(4) { animation-delay: 0.24s; }
+.skills__grid .reveal:nth-child(5) { animation-delay: 0.32s; }
+
+.faq__list .reveal:nth-child(2) { animation-delay: 0.07s; }
+.faq__list .reveal:nth-child(3) { animation-delay: 0.14s; }
+.faq__list .reveal:nth-child(4) { animation-delay: 0.21s; }
+.faq__list .reveal:nth-child(5) { animation-delay: 0.28s; }
+
+/* Card checklist items cascade in once the card is revealed */
+.js .card__list li {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.45s ease, transform 0.45s ease, color var(--transition-base);
+}
+
+.card.is-visible .card__list li {
+  opacity: 1;
+  transform: none;
+}
+
+.card.is-visible .card__list li:nth-child(1) { transition-delay: 0.35s; }
+.card.is-visible .card__list li:nth-child(2) { transition-delay: 0.43s; }
+.card.is-visible .card__list li:nth-child(3) { transition-delay: 0.51s; }
+.card.is-visible .card__list li:nth-child(4) { transition-delay: 0.59s; }
+.card.is-visible .card__list li:nth-child(5) { transition-delay: 0.67s; }
+
+/* Hero trust items cascade after the buttons */
+.js .hero__trust li {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero__trust.is-visible li {
+  opacity: 1;
+  transform: none;
+}
+
+.hero__trust.is-visible li:nth-child(1) { transition-delay: 0.25s; }
+.hero__trust.is-visible li:nth-child(2) { transition-delay: 0.37s; }
+.hero__trust.is-visible li:nth-child(3) { transition-delay: 0.49s; }
+
+/* Process numbers fade up to their watermark opacity on reveal */
+.js .process__step.reveal .process__number {
+  opacity: 0;
+  transition: opacity 1s ease 0.2s;
+}
+
+.js .process__step.reveal.is-visible .process__number {
+  opacity: 0.12;
+}
+
+/* FAQ answers slide open */
+.faq__item[open] .faq__answer {
+  animation: fadeInUp 0.35s ease;
+}
+
+/* Gold sheen sweeping across primary buttons on hover */
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-15deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.btn--primary:hover::after {
+  left: 130%;
+}
+
+/* Skills: gold tint + number nudge on hover */
+.skill {
+  transition: background-color var(--transition-base), background-image var(--transition-fast);
+}
+
+.skill:hover {
+  background-image: linear-gradient(rgba(201, 168, 76, 0.07), rgba(201, 168, 76, 0.07));
+}
+
+.skill__number {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.skill:hover .skill__number {
+  transform: translateX(6px);
+}
+
+/* Hero words */
+.hero__line {
+  overflow: hidden;
+}
+
+.hero__line span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* .hero__line spans only exist once scroll.js has split the title, so they
+   need no .js gate — but these hidden children do: */
+
+.hero__line span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold line animation */
+.gold-line {
+  transition: width 0.8s ease;
+}
+
+.gold-line.is-visible {
+  width: 100%;
+}
+
+/* Card hover handled in components.css via transition already, extra glow keyframe */
+@keyframes pulseGold {
+  0%, 100% { opacity: 0.12; }
+  50% { opacity: 0.2; }
+}
+
+.process__step:hover .process__number {
+  animation: pulseGold 2s ease-in-out infinite;
+}
+
+/* Fade utility */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Hero eyebrow entrance (appears just before the word-by-word title) */
+.hero__eyebrow {
+  animation: fadeInUp 0.6s ease 0.05s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero scroll cue */
+.hero__scroll span {
+  animation: scrollCue 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollCue {
+  0% { transform: translateY(-100%); }
+  55% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+/* Portfolio — cascades supplémentaires */
+.projects__grid .reveal:nth-child(2) { animation-delay: 0.12s; }
+.projects__grid .reveal:nth-child(3) { animation-delay: 0.24s; }
+
+.skills__grid .reveal:nth-child(6) { animation-delay: 0.40s; }
+
+.learning__grid .reveal:nth-child(2) { animation-delay: 0.1s; }
+.learning__grid .reveal:nth-child(3) { animation-delay: 0.2s; }
+.learning__grid .reveal:nth-child(4) { animation-delay: 0.3s; }
+
+.missions__grid .reveal:nth-child(2) { animation-delay: 0.08s; }
+.missions__grid .reveal:nth-child(3) { animation-delay: 0.16s; }
+.missions__grid .reveal:nth-child(4) { animation-delay: 0.24s; }
+
+/* Cartes projet : les tags apparaissent en cascade */
+.js .card .tags .tag {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease, color var(--transition-base), border-color var(--transition-base);
+}
+
+.card.is-visible .tags .tag {
+  opacity: 1;
+  transform: none;
+}
+
+.card.is-visible .tags .tag:nth-child(1) { transition-delay: 0.30s; }
+.card.is-visible .tags .tag:nth-child(2) { transition-delay: 0.36s; }
+.card.is-visible .tags .tag:nth-child(3) { transition-delay: 0.42s; }
+.card.is-visible .tags .tag:nth-child(4) { transition-delay: 0.48s; }
+.card.is-visible .tags .tag:nth-child(5) { transition-delay: 0.54s; }
+
+.projects__grid .reveal:nth-child(4) { animation-delay: 0.36s; }

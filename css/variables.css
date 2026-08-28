@@ -1,0 +1,68 @@
+:root {
+  /* Colors */
+  --color-white: #ffffff;
+  --color-black: #0a0a0a;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E8D5A3;
+  --color-gold-text: #8A6D22;
+  --color-gray: #666666;
+  --color-bg-dark: #111111;
+
+  /* Semantic Theme Colors (Light Theme by Default) */
+  --bg-color: var(--color-white);
+  --text-color: var(--color-black);
+  --text-muted: var(--color-gray);
+  --card-bg: var(--color-white);
+  --skill-bg: var(--color-white);
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-border: rgba(201, 168, 76, 0.15);
+  --card-shadow: rgba(201, 168, 76, 0.18);
+  --btn-primary-bg: var(--color-black);
+  --btn-primary-text: var(--color-white);
+  --btn-primary-border: var(--color-black);
+  --btn-primary-hover-bg: var(--color-gold);
+  --btn-primary-hover-text: var(--color-black);
+  --btn-primary-hover-border: var(--color-gold);
+  --hamburger-color: var(--color-black);
+  --mobile-menu-bg: var(--color-white);
+  --border-color: rgba(201, 168, 76, 0.25);
+  --border-color-light: rgba(201, 168, 76, 0.2);
+
+  /* Fonts */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+
+  /* Spacing */
+  --section-padding-desktop: 140px;
+  --section-padding-mobile: 80px;
+
+  /* Transitions */
+  --transition-base: 0.3s ease;
+  --transition-fast: 0.25s ease;
+
+  /* Layout */
+  --container-width: 1180px;
+  --container-padding: 32px;
+}
+
+[data-theme="dark"] {
+  --color-gold-text: #C9A84C;
+  --bg-color: var(--color-bg-dark);
+  --text-color: var(--color-white);
+  --text-muted: #a0a0a0;
+  --card-bg: #1a1a1a;
+  --skill-bg: #1a1a1a;
+  --header-bg: rgba(17, 17, 17, 0.92);
+  --header-border: rgba(201, 168, 76, 0.25);
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --btn-primary-bg: var(--color-gold);
+  --btn-primary-text: var(--color-black);
+  --btn-primary-border: var(--color-gold);
+  --btn-primary-hover-bg: var(--color-white);
+  --btn-primary-hover-text: var(--color-black);
+  --btn-primary-hover-border: var(--color-white);
+  --hamburger-color: var(--color-white);
+  --mobile-menu-bg: var(--color-bg-dark);
+  --border-color: rgba(201, 168, 76, 0.4);
+  --border-color-light: rgba(201, 168, 76, 0.3);
+}
