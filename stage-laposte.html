@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLM interne — La Poste — Kilian Dach</title>
-<meta name="description" content="Stage à la DSI de La Poste : déploiement d'un LLM interne (Gemma, vLLM), interface web Angular type Copilot, anonymisation, OIDC et custom node n8n.">
+<meta name="description" content="Stage à la DSI de La Poste : déploiement de Gemma 4 E2B via vLLM en haute disponibilité, interface web Angular type Copilot, anonymisation RGPD et custom node n8n.">
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
 
@@ -144,32 +144,74 @@
 
         <div class="doc__section reveal">
           <h2 class="doc__title">Ce que j'ai construit</h2>
-          <p>J'ai déployé un modèle <span class="tech-inline">Gemma</span> en interne via <span class="tech-inline">vLLM</span>, exposé sous forme d'API. Autour de ce modèle, j'ai développé une interface web type Copilot permettant aux équipes non techniques de l'utiliser au quotidien.</p>
-          <p>Pour étendre l'usage du modèle au-delà de l'interface web, j'ai également créé un custom node <span class="tech-inline">n8n</span> en TypeScript, permettant d'intégrer le LLM interne directement dans des workflows d'automatisation.</p>
+          <p>J'ai déployé <span class="tech-inline">Gemma 4 E2B</span> en interne via <span class="tech-inline">vLLM</span>, sur deux VMs GPU en haute disponibilité, exposé sous une API compatible OpenAI. Autour de ce modèle, j'ai développé une interface web type Copilot permettant aux équipes non techniques de l'utiliser au quotidien.</p>
+          <p>Pour étendre l'usage du modèle au-delà de l'interface web, j'ai également développé un custom node <span class="tech-inline">n8n</span> en TypeScript, publié sur le registre npm interne, permettant de brancher le LLM directement dans des workflows d'automatisation.</p>
 
           <div class="missions__grid">
             <div class="mission reveal">
-              <h3 class="mission__title">Modèle &amp; API</h3>
-              <p>Déploiement d'un modèle Gemma en interne via vLLM, exposé sous forme d'API consommable par les autres outils du système d'information.</p>
+              <h3 class="mission__title">Modèle &amp; haute disponibilité</h3>
+              <p>Gemma 4 E2B servi par vLLM sur deux VMs NVIDIA L40S (24 Go de VRAM chacune), derrière une VIP HTTPS Keepalived qui répartit les requêtes et bascule automatiquement en cas de panne d'une VM.</p>
             </div>
             <div class="mission reveal">
               <h3 class="mission__title">Interface type Copilot</h3>
-              <p>Interface web pensée pour les équipes non techniques, d'abord prototypée en Lit/JavaScript puis portée sous Angular en cours de projet.</p>
+              <p>Backend FastAPI (streaming SSE token par token, extraction PDF/TXT) et frontend d'abord prototypé en Lit, puis porté sous Angular pour tenir dans la durée. Réglage de la température, mode sombre/clair.</p>
             </div>
             <div class="mission reveal">
-              <h3 class="mission__title">Anonymisation &amp; accès</h3>
-              <p>Fonction d'anonymisation des documents avant traitement, et authentification OIDC du groupe pour la gestion des accès.</p>
+              <h3 class="mission__title">Anonymisation RGPD</h3>
+              <p>Le modèle extrait les données sensibles d'un texte sous forme de JSON structuré ; le code résout les chevauchements et remplace chaque occurrence par un alias typé déterministe ([nom_01], [email_02]…), avec la table de correspondance en retour.</p>
             </div>
             <div class="mission reveal">
-              <h3 class="mission__title">Custom node n8n</h3>
-              <p>Node n8n développé en TypeScript pour brancher le LLM interne directement dans les workflows d'automatisation existants.</p>
+              <h3 class="mission__title">Custom node n8n &amp; IDE</h3>
+              <p>Node TypeScript @bscc/n8n-nodes-llm-interne (opérations Chat et Anonymiser), publié en interne. Intégration Cline dans VS Code et IntelliJ IDEA pour les développeurs de l'équipe.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc__section reveal">
+          <h2 class="doc__title">De llama.cpp à vLLM : diagnostiquer un goulot d'étranglement</h2>
+          <p>Le projet a évolué en trois phases. J'ai d'abord validé le modèle en local, puis déployé <span class="tech-inline">llama.cpp</span> sur une VM GPU. En mise en charge, le problème est apparu : llama.cpp traite les requêtes une par une, sans file d'attente interne. Dès que plusieurs appels arrivaient en même temps (Cline et n8n en parallèle, par exemple), les requêtes en attente expiraient et échouaient.</p>
+          <p>J'ai posé ce diagnostic, proposé une migration vers vLLM à mon tuteur, et l'ai mise en œuvre une fois validée. Le test de charge comparatif a été net : l'envoi de trois requêtes simultanées provoquait systématiquement des erreurs sous llama.cpp, et aucune sous vLLM.</p>
+
+          <div class="missions__grid">
+            <div class="mission reveal">
+              <h3 class="mission__title">Avant — llama.cpp</h3>
+              <p>Traitement séquentiel, une requête à la fois. Empreinte mémoire réduite et accès complet aux paramètres d'inférence, mais aucune file d'attente : les appels concurrents se bloquent et échouent.</p>
+            </div>
+            <div class="mission reveal">
+              <h3 class="mission__title">Après — vLLM</h3>
+              <p>Continuous batching natif : plusieurs requêtes traitées en parallèle, file d'attente interne, support natif du format safetensors du catalogue de modèles internes — plus aucune erreur sous charge.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc__section reveal">
+          <h2 class="doc__title">Architecture</h2>
+          <p>Tous les consommateurs — workflows n8n, application web, IDE via Cline, appels HTTP directs — adressent la même VIP HTTPS, quelle que soit leur nature. Ça simplifie la configuration côté client et masque complètement la répartition entre les deux VMs d'inférence.</p>
+
+          <div class="arch-flow reveal">
+            <div class="arch-flow__step">
+              <p class="arch-flow__label">Consommateurs</p>
+              <h3>n8n · App web · IDE</h3>
+              <p>Workflows n8n, interface Copilot, Cline dans VS Code / IntelliJ, ou tout client compatible OpenAI.</p>
+            </div>
+            <div class="arch-flow__arrow" aria-hidden="true">→</div>
+            <div class="arch-flow__step">
+              <p class="arch-flow__label">Accès</p>
+              <h3>VIP HTTPS · Keepalived</h3>
+              <p>Point d'entrée unique, répartition des requêtes entre les deux VMs et bascule automatique en cas de panne.</p>
+            </div>
+            <div class="arch-flow__arrow" aria-hidden="true">→</div>
+            <div class="arch-flow__step">
+              <p class="arch-flow__label">Inférence</p>
+              <h3>2 × VM GPU · vLLM</h3>
+              <p>Gemma 4 E2B en safetensors, continuous batching, file d'attente interne, API /v1/chat/completions.</p>
             </div>
           </div>
         </div>
 
         <div class="doc__section reveal">
           <h2 class="doc__title">Stack et mise en production</h2>
-          <p>L'ensemble a été livré via des pipelines GitLab CI/CD, conteneurisé sous Docker et déployé sur OpenShift, avec la qualité de code suivie sous SonarQube.</p>
+          <p>L'application web a été livrée via des pipelines GitLab CI/CD sur OpenShift. Les VMs d'inférence tournent sous un service systemd (redémarrage automatique), avec Keepalived pour la haute disponibilité de la VIP.</p>
           <div class="tech__grid">
             <div class="tech__item">
               <p class="tech__label">Application</p>
@@ -177,33 +219,50 @@
                 <span class="tag">Angular</span>
                 <span class="tag">TypeScript</span>
                 <span class="tag">Lit</span>
+                <span class="tag">FastAPI</span>
                 <span class="tag">Python</span>
               </div>
             </div>
             <div class="tech__item">
               <p class="tech__label">IA &amp; automatisation</p>
               <div class="tags">
-                <span class="tag">Gemma</span>
+                <span class="tag">Gemma 4 E2B</span>
                 <span class="tag">vLLM</span>
                 <span class="tag">n8n</span>
-                <span class="tag">OIDC</span>
+                <span class="tag">Cline</span>
               </div>
             </div>
             <div class="tech__item">
-              <p class="tech__label">Livraison</p>
+              <p class="tech__label">Infrastructure</p>
               <div class="tags">
                 <span class="tag">GitLab CI/CD</span>
-                <span class="tag">Docker</span>
                 <span class="tag">OpenShift</span>
-                <span class="tag">SonarQube</span>
+                <span class="tag">Keepalived</span>
+                <span class="tag">CUDA</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="doc__section reveal">
+          <h2 class="doc__title">Preuves &amp; résultats</h2>
+          <p>Deux captures de l'interface réellement utilisée par les équipes de la DSI. Clique sur une image pour l'agrandir.</p>
+
+          <div class="proof-gallery reveal">
+            <div class="proof-shot">
+              <img src="assets/images/stage-laposte/interface-accueil.jpg" alt="Écran d'accueil de l'interface Chat LLM : message de bienvenue, historique des conversations, réglage de la température" loading="lazy">
+              <p class="proof-shot__caption">L'interface Copilot (Angular) : historique des conversations, mode Anonymisation RGPD, réglage de la température.</p>
+            </div>
+            <div class="proof-shot">
+              <img src="assets/images/stage-laposte/interface-code.jpg" alt="Interface de chat générant une fonction Python en réponse à une question, avec coloration syntaxique" loading="lazy">
+              <p class="proof-shot__caption">Réponse générée en direct par Gemma 4 E2B, diffusée token par token via SSE.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc__section reveal">
           <h2 class="doc__title">Résultat</h2>
-          <p>Les outils développés pendant ce stage sont aujourd'hui utilisés en interne par les équipes de la DSI — une brique pensée pour garder les données dans l'entreprise et réduire les coûts face aux solutions du marché.</p>
+          <p>Les outils développés pendant ce stage sont aujourd'hui utilisés en interne par les équipes de la DSI — une brique pensée pour garder les données dans l'entreprise, avec un coût d'infrastructure interne amorti dès qu'une vingtaine d'utilisateurs actifs l'utilisent régulièrement, face au tarif d'un accès cloud par utilisateur.</p>
           <div class="about__actions">
             <a href="index.html#projets" class="text-link">
               <span>Voir les autres projets</span>
@@ -255,5 +314,6 @@
 <script src="js/scroll.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script src="js/cursor.js" defer></script>
+<script src="js/lightbox.js" defer></script>
 </body>
 </html>

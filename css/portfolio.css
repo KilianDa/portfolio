@@ -579,3 +579,155 @@
   width: max-content;
   max-width: 100%;
 }
+
+/* =========================================================
+   DIAGRAMME D'ARCHITECTURE — flux consommateurs → accès → inférence
+   Boxes reliées par des flèches or, réutilisé sur les pages projet
+   ========================================================= */
+.arch-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-top: 32px;
+}
+
+.arch-flow__step {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  padding: 28px 24px;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.arch-flow__label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-text);
+  margin-bottom: 14px;
+}
+
+.arch-flow__step h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  transition: color var(--transition-base);
+}
+
+.arch-flow__step p {
+  font-size: 0.88rem;
+}
+
+.arch-flow__arrow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  color: var(--color-gold);
+  font-size: 1.3rem;
+}
+
+/* --- Capture d'écran encadrée (preuve) --- */
+.proof-shot {
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  padding: 12px;
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+.proof-shot img {
+  width: 100%;
+  display: block;
+  cursor: zoom-in;
+}
+
+.proof-shot__caption {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.proof-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 32px;
+}
+
+/* --- Lightbox : agrandissement des captures au clic --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 5vw;
+  background: rgba(5, 5, 5, 0.92);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility 0s var(--transition-base);
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-base), visibility 0s;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  cursor: zoom-out;
+  transform: scale(0.97);
+  transition: transform var(--transition-base);
+}
+
+.lightbox.is-open .lightbox__img {
+  transform: scale(1);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background-color var(--transition-fast);
+}
+
+.lightbox__close:hover {
+  background: rgba(201, 168, 76, 0.25);
+}
+
+@media (max-width: 860px) {
+  .arch-flow {
+    flex-direction: column;
+  }
+
+  .arch-flow__arrow {
+    width: auto;
+    height: 32px;
+    transform: rotate(90deg);
+  }
+
+  .proof-gallery {
+    grid-template-columns: 1fr;
+  }
+}
